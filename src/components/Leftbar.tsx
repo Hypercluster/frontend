@@ -51,7 +51,7 @@ export default function Leftbar() {
         <Link
           href={"/create"}
           className={`text-white flex justify-between py-3 pl-6 mt-2  ${
-            pathname == "" && "bg-[#1E2344]  border-r-4 border-white"
+            pathname == "/create" && "bg-[#1E2344]  border-r-4 border-white"
           }  `}
         >
           <div className="flex">
