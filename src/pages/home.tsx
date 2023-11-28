@@ -1,4 +1,3 @@
-import BusinessNavbar from "@/components/BusinessNavbar";
 import Leftbar from "@/components/Leftbar";
 import { faUser, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

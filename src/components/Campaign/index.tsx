@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Info from "./Info";
 import Rules from "./Rules";
 import Status from "./Status";
-import Modal from "./modals/Modal";
+import Modal from "../modals/Modal";
 
 export default function Campaign() {
   const [select, setSelect] = useState<

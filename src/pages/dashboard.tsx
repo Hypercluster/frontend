@@ -1,10 +1,9 @@
-import BusinessNavbar from "@/components/BusinessNavbar";
 import Leftbar from "@/components/Leftbar";
 
 export default function DashboardPage() {
   return (
-    <BusinessNavbar>
+    <div className="flex justify-start  h-screen">
       <Leftbar />
-    </BusinessNavbar>
+    </div>
   );
 }

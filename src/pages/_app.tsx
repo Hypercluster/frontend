@@ -3,6 +3,8 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import * as React from "react";
 import "@/styles/globals.css";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 import type { AppProps } from "next/app";
 
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
