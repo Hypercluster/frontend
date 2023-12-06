@@ -8,6 +8,7 @@ export default function CampaignSetup({
   handleFileChange,
   fileInputRef,
   setRange,
+  handleName,
   handleNextPage,
 }: {
   selectedFile: File | null;
@@ -17,6 +18,7 @@ export default function CampaignSetup({
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fileInputRef: React.RefObject<HTMLInputElement>;
   setRange: React.Dispatch<React.SetStateAction<any[]>>;
+  handleName: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleNextPage: () => void;
 }) {
   return (
@@ -25,7 +27,7 @@ export default function CampaignSetup({
         <p>Campaign Setup</p>
       </div>
       <div className="flex-1 py-8 pl-8 bg-[#1D1F27]">
-        <p className="text-white text-lg ">Upload Logo</p>
+        <p className="text-white text-lg ">1. Upload Logo</p>
         <div className="flex mt-5">
           <div
             className={`${
@@ -57,8 +59,14 @@ export default function CampaignSetup({
             )}
           </div>
         </div>
+        <div> 
+          <p className="text-white text-lg mt-16 my-10">
+            2. Choose a great name
+          </p>
+          <input onChange={handleName}/>
+        </div>
         <p className="text-white text-lg mt-16 my-10">
-          Set your start and end dates.
+          3. Set your start and end dates
         </p>
         <div>
           <DatePickerComponent setRange={setRange} />
