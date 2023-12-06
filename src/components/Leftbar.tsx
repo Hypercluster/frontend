@@ -56,7 +56,7 @@ export default function Leftbar() {
         >
           <div className="flex">
             <FontAwesomeIcon icon={faRectangleList} className="my-auto" />
-            <p className="ml-4 text-lg">Create Project</p>
+            <p className="ml-4 text-lg">Create Campaign</p>
           </div>
         </Link>
       </div>

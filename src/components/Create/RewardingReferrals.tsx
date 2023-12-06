@@ -1,11 +1,18 @@
 import { useState } from "react";
 import Dropdown from "../Dropdown";
 import Image from "next/image";
+import { useAccount } from "wagmi";
 
 export default function RewardingReferrals({
   handleNextPage,
+  handleCreateCampaign,
+  isLoading,
+  isSuccess
 }: {
   handleNextPage: () => void;
+  handleCreateCampaign: () => void;
+  isLoading: boolean;
+  isSuccess: boolean;
 }) {
   const [option1, setOption1] = useState("Price");
   const [option2, setOption2] = useState("Increases");
@@ -13,6 +20,8 @@ export default function RewardingReferrals({
   const [option4, setOption4] = useState("0");
   const [maxTokens, setMaxTokens] = useState("0");
   const [estimatedValue, setEstimatedValue] = useState("0");
+
+  const { address } = useAccount();
 
   return (
     <div className="flex flex-col h-full">
@@ -134,12 +143,11 @@ export default function RewardingReferrals({
         </div>
         <div className="relative">
           <button
-            onClick={() => {
-              handleNextPage();
-            }}
+            onClick={handleCreateCampaign}
+            disabled={!address}
             className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-14 bottom-[1px]"
           >
-            Deploy
+            { isLoading ? "Deploying..." : "Deploy" }
           </button>
         </div>
       </div>
