@@ -2,7 +2,7 @@ export default function DeployedModal({ close }: { close: () => void }) {
   return (
     <>
       <p className="text-black font-bold text-xl text-center tracking-tighter mt-4">
-        CONTRACT DEPLOYED!
+        CAMPAIGN IS ACTIVE!
       </p>
       <p className="text-black font-bold text-xl text-center tracking-tighter mt-8 mb-1">
         LIGHT THE FUSE

@@ -14,7 +14,7 @@ export default function Home() {
         <Hero />
         <Campaigns />
       </div>
-      <Link href={"/"} className="flex mt-10">
+      <Link href={"/home"} className="flex mt-10">
         <FontAwesomeIcon
           icon={faCircleInfo}
           className=" text-gray-500 text-sm my-auto mr-2 bg-white rounded-full"
