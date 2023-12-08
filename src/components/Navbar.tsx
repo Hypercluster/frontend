@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Navbar({ children }: { children: React.ReactNode }) {
   const [isNotification, setIsNotification] = useState(true);
@@ -30,7 +31,8 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
               className="mb-2"
             />
           </div>
-          <div className="flex space-x-16 mr-10">
+          <div className="flex space-x-16 mr-20 items-center">
+            <ConnectButton />
             <Link href={"/"} className="relative">
               {isNotification && (
                 <div className="absolute bg-purple-600 rounded-full h-[8px] w-[7px] left-[20px] top-[-4px]"></div>
@@ -46,6 +48,7 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
                 className="text-lg text-gray-500"
               />
             </Link>
+           
             <Link href={"/"}>
               <FontAwesomeIcon
                 icon={faWallet}

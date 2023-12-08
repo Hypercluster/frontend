@@ -6,8 +6,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   let referrer, campaign_id, referring;
 
   try {
-    const { referrer, campaign_id, referring } = resolveReferralLink(req.query.ref as string);
-    res.status(200).send(referrer);
+    res.status(200).json(resolveReferralLink(req.query.ref as string));
 
   } catch (error) {
     return res.status(500).json(error);

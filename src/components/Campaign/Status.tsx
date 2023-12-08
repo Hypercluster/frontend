@@ -1,7 +1,40 @@
+import { HyperclusterABI } from "@/helpers/abi";
 import { useState } from "react";
+import { useAccount, useContractReads } from "wagmi";
 
-export default function Status() {
+
+export default function Status({
+  handleConnect,
+  handleRefer, 
+  handleClaim
+} : {
+  handleConnect: () => void;
+  handleRefer: () => void;
+  handleClaim: () => void;
+}) {
   const [passedBotCheck, setPassedBotCheck] = useState(false);
+
+  const { address } = useAccount();
+
+  const { data, isError, isLoading } = useContractReads({
+    contracts: [
+      {
+        address: '0x954F64310224f66Dc99847718B309e3EB72DA64A',
+        abi: HyperclusterABI as any,
+        functionName: 'referrals',
+        args: [address as any, 0],
+      },
+      {
+        address: '0x954F64310224f66Dc99847718B309e3EB72DA64A',
+        abi: HyperclusterABI as any,
+        functionName: 'referrals',
+        args: [address as any, 1],
+      },
+    ],
+  })
+
+  console.log(data);
+
   return (
     <div className="  h-[60%] p-20 flex flex-col space-y-3">
       <p className="text-[#C9BFD8] text-2xl pb-6">
@@ -35,9 +68,9 @@ export default function Status() {
         _ _ _ _ & _ _ _ _
       </p>
       <div className=" pt-24 flex space-x-10 tracking-tight  pb-10">
-        <p className=" text-2xl text-[#FF5906]">CONNECT</p>
-        <p className=" text-2xl text-[#C9BFD8]">REFER</p>
-        <p className=" text-2xl text-[#C9BFD8]">CLAIM</p>
+        <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleConnect}> CONNECT </p>
+        <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleRefer}> REFER </p>
+        <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleClaim}> CLAIM </p>
       </div>
     </div>
   );

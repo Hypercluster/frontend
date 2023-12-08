@@ -9,7 +9,7 @@ import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, useCo
 
 
 export default function CreatePage() {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
 
   const [name, setName] = useState("");
 
@@ -96,6 +96,8 @@ export default function CreatePage() {
     functionName: 'createCampaign',
     args: [name, "0x779877A7B0D9E8603169DdbD7836e478b4624789", "0x42585eD362B3f1BCa95c640FdFf35Ef899212734"] // link token and datafeed on sepolia
   })
+
+  // 0xD21341536c5cF5EB1bcb58f6723cE26e8D8E90e4
 
   const { data, write } = useContractWrite(config)
    

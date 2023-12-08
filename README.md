@@ -8,3 +8,7 @@ TODO:
 - tell gabriel about the int256 trick 
 
 
+
+
+ROUTES:
+- http://localhost:3000/campaign/apecoinreferralnetwork?ref=

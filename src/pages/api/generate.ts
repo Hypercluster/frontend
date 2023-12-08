@@ -5,7 +5,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 // {
 //   "referrer_address": "0x231231273y213132bfb3fbiunfiwnfewe",
-//   "campaign_id": "donkey"
+//   "campaign_id": "donkey",
+//  "referring_address": ""
 // }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
