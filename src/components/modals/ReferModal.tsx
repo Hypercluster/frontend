@@ -16,7 +16,7 @@ export default function ReferModal({
         <button onClick={async () => {await navigator.clipboard.writeText(params[0])}}
           className=" py-1 px-8  rounded-xl text-white text-xl text-center tracking-tighter mt-1 truncate"
         >
-          {params[0]}
+          {params[3]}
         </button>
       </div>
       <p className="text-black font-bold text-md text-center my-8 hover:text-white hover:cursor-pointer"

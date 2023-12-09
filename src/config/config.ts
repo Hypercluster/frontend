@@ -2,9 +2,6 @@
 
 import { HyperclusterABI, HyperclusterFactoryABI } from "@/helpers/abi";
 
-console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
-
-
 export const settings = {
   fuji: {
     SafeImplementation: {
@@ -23,7 +20,10 @@ export const settings = {
 
     }
   },
-  endpoint: (process.env.NEXT_PUBLIC_VERCEL_ENV) ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'https://localhost:3000'
+  endpoint: (process.env.NEXT_PUBLIC_VERCEL_ENV) ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000'
 }
 
 console.log("this endpoint", settings.endpoint);
+
+
+// ?ref=401c35625d67701f9b572fe8c8313d71b3618170a7f1b6c76de0b13d3e671979e7e687e142d057e258a5cc8a71293d21c6b9b2ca5ea52fff0b221c6933693805c5f1cd9bc457b9b3db59f8773c9a6ef1202193fc372b31aa32666eda3ea50aec
