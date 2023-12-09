@@ -2,12 +2,7 @@
 
 import { HyperclusterABI, HyperclusterFactoryABI } from "@/helpers/abi";
 
-// etc. 
-const prod = process.env.VERCEL_ENV == "production";
-
-console.log("is prod environment?", prod);
-
-console.log(process.env.VERCEL_URL)
+console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
 
 
 export const settings = {
@@ -28,7 +23,7 @@ export const settings = {
 
     }
   },
-  endpoint: prod ? `http://${process.env.VERCEL_URL}` : 'http://localhost:3000'
+  endpoint: (process.env.NEXT_PUBLIC_VERCEL_ENV) ? `http://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000'
 }
 
 console.log("this endpoint", settings.endpoint);
