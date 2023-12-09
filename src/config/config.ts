@@ -5,6 +5,10 @@ import { HyperclusterABI, HyperclusterFactoryABI } from "@/helpers/abi";
 // etc. 
 const prod = process.env.VERCEL_ENV == "production";
 
+console.log("is prod environment?", prod);
+
+console.log(process.env.VERCEL_URL)
+
 
 export const settings = {
   fuji: {
@@ -26,3 +30,5 @@ export const settings = {
   },
   endpoint: prod ? `http://${process.env.VERCEL_URL}` : 'http://localhost:3000'
 }
+
+console.log("this endpoint", settings.endpoint);
