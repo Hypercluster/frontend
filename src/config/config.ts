@@ -23,7 +23,7 @@ export const settings = {
 
     }
   },
-  endpoint: (process.env.NEXT_PUBLIC_VERCEL_ENV) ? `http://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000'
+  endpoint: (process.env.NEXT_PUBLIC_VERCEL_ENV) ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'https://localhost:3000'
 }
 
 console.log("this endpoint", settings.endpoint);
