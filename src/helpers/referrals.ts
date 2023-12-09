@@ -16,7 +16,7 @@ export interface DecryptedRefferalCodeResponse {
 
 
 // generates a referal link that can only be used by a specific address
-export function generateReferralLink(referrer_address: string, campaign_id: string, referee_address: string | null = "0",) {
+export function generateReferralLink(referrer_address: string, campaign_id: string, referee_address: string | null = "0"): string {
 
   const cipher = createCipheriv('aes-256-cbc', ek, iv);
 

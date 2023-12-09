@@ -6,11 +6,13 @@ import { useAccount, useContractReads } from "wagmi";
 export default function Status({
   handleConnect,
   handleRefer, 
-  handleClaim
+  handleClaim,
+  isUserIn,
 } : {
   handleConnect: () => void;
   handleRefer: () => void;
   handleClaim: () => void;
+  isUserIn: boolean;
 }) {
   const [passedBotCheck, setPassedBotCheck] = useState(false);
 
@@ -32,8 +34,6 @@ export default function Status({
       },
     ],
   })
-
-  console.log(data);
 
   return (
     <div className="  h-[60%] p-20 flex flex-col space-y-3">
@@ -68,7 +68,11 @@ export default function Status({
         _ _ _ _ & _ _ _ _
       </p>
       <div className=" pt-24 flex space-x-10 tracking-tight  pb-10">
+        {isUserIn ? 
+        <p className=" text-2xl text-[#C9BFD8] bold"> CONNECTED </p>
+        :
         <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleConnect}> CONNECT </p>
+        }
         <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleRefer}> REFER </p>
         <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleClaim}> CLAIM </p>
       </div>

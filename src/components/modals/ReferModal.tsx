@@ -5,6 +5,7 @@ export default function ReferModal({
   close: () => void;
   params: string[];
 }) {
+
   return (
     <>
       <p className="text-black font-bold text-xl text-center my-8 ">
@@ -12,14 +13,18 @@ export default function ReferModal({
       </p>
     
       <div className="flex justify-center">
-        <button
-          className=" py-1 px-12  rounded-xl text-white text-xl text-center tracking-tighter mt-1"
-          onClick={() => close()}
+        <button onClick={async () => {await navigator.clipboard.writeText(params[0])}}
+          className=" py-1 px-8  rounded-xl text-white text-xl text-center tracking-tighter mt-1 truncate"
         >
           {params[0]}
         </button>
       </div>
-      <p className="text-black font-bold text-md text-center my-8 ">
+      <p className="text-black font-bold text-md text-center my-8 hover:text-white hover:cursor-pointer"
+          onClick={async () => {
+            await navigator.clipboard.writeText(params[0])
+            close()
+          }}
+        >
         BOTS WILL BE ELIMINATED BY AI
       </p>
     </>
