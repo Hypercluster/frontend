@@ -1,4 +1,5 @@
 import DatePickerComponent from "../DatePicker";
+import Input from "../Input";
 
 export default function CampaignSetup({
   selectedFile,
@@ -10,6 +11,7 @@ export default function CampaignSetup({
   setRange,
   handleName,
   handleNextPage,
+  name,
 }: {
   selectedFile: File | null;
   handleClick: () => void;
@@ -18,8 +20,9 @@ export default function CampaignSetup({
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fileInputRef: React.RefObject<HTMLInputElement>;
   setRange: React.Dispatch<React.SetStateAction<any[]>>;
-  handleName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleName: (e: any) => void;
   handleNextPage: () => void;
+  name: string;
 }) {
   return (
     <div className="flex flex-col h-full">
@@ -63,7 +66,7 @@ export default function CampaignSetup({
           <p className="text-white text-lg mt-16 my-10">
             2. Choose a great name
           </p>
-          <input onChange={handleName}/>
+          <Input onChange={handleName} value={name} type="text" />
         </div>
         <p className="text-white text-lg mt-16 my-10">
           3. Set your start and end dates

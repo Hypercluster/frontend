@@ -49,7 +49,6 @@ export default function HomePage() {
               <li>Share the first reward link with your first user</li>
             </ul>
             <ul className="list-disc text-[#C3C3C3] mr-8 mt-5 w-[40%]">
-              <li>Tier J = 1X, Tier K = 0.5X, Tier L 0.25X...</li>
               <li>
                 Every trigger will trickle a set amount of tokens into the the
                 cluster and users can claim anytime.
@@ -155,6 +154,7 @@ export default function HomePage() {
             <p className="mt-2">7x</p>
           </div>
         </div>
+     
         <p className="mt-8 ml-4 text-white text-2xl">Get Started</p>
         <div className="flex justify-between mx-4 space-x-8 mt-5">
           <Link

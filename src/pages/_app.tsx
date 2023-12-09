@@ -13,7 +13,7 @@ import { goerli, sepolia, avalancheFuji, polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient } = configureChains(
-  [goerli, sepolia, avalancheFuji, polygonMumbai],
+  [sepolia, avalancheFuji],
   [publicProvider()]
 );
 

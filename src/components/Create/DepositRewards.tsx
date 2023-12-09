@@ -40,10 +40,10 @@ export default function DepositRewards({
 
   })
   const copyTextToClipboard = () => {
-    const textToCopy = document.getElementById("copyText").innerText;
+    const textToCopy = document.getElementById("copyText")?.innerText;
 
     navigator.clipboard
-      .writeText(textToCopy)
+      .writeText(textToCopy || "")
       .then(() => {})
       .catch((err) => {
         console.error("Unable to copy text to clipboard", err);

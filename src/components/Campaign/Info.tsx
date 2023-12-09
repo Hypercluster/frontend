@@ -9,7 +9,7 @@ export default function Info() {
     currentTier: "HIDDEN",
   });
   return (
-    <div className="border-b border-[#FF5906] h-[40%]  p-20 flex flex-col space-y-3">
+    <div className="border-b border-[#FF5906] h-[40%] p-20 flex flex-col space-y-3">
       <p className="text-white text-2xl">
         <span className="text-[#FF5906]">NAME:</span> {data.name}
       </p>

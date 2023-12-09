@@ -5,11 +5,14 @@ import CampaignSetup from "@/components/Create/CampaignSetup";
 import Topbar from "@/components/Topbar";
 import RewardingReferrals from "@/components/Create/RewardingReferrals";
 import DepositRewards from "@/components/Create/DepositRewards";
-import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, useContractEvent } from "wagmi";
+import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, useContractEvent, useAccount } from "wagmi";
+import { settings } from "@/config/config";
+import { IcreateCampaignParams } from "@/helpers/interface";
+import { encodeAbiParameters } from 'viem'
 
 
 export default function CreatePage() {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
 
   const [name, setName] = useState("");
 
@@ -19,13 +22,12 @@ export default function CreatePage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
 
-  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleName = (e: any) => {
     if (e.target.value.includes("/")) { 
       alert("Invalid character '/' in name")
     } else {
       setName(e.target.value);
     }
-    console.log(name);
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,75 +62,39 @@ export default function CreatePage() {
     fileInputRef.current?.click();
   };
 
+  const { address: userAddress } = useAccount(); 
+
   
-  const { config } = usePrepareContractWrite({
-    address: "0x395E95fF2AB6c714Ab52A95274816e6648ed91C7", 
-    abi: [{
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "internalType": "address",
-            "name": "reward_token",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_datafeed",
-            "type": "address"
-          }
-        ],
-        "name": "createCampaign",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "payable",
-        "type": "function"
-      },
-    ],
+  const { data, write } = useContractWrite({
+    address: settings.fuji.HyperclusterFactory.address as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
     functionName: 'createCampaign',
-    args: [name, "0x779877A7B0D9E8603169DdbD7836e478b4624789", "0x42585eD362B3f1BCa95c640FdFf35Ef899212734"] // link token and datafeed on sepolia
   })
 
-  const { data, write } = useContractWrite(config)
+  
    
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   })
 
   const handleCreateCampaign = () => {
-    write?.();
+    console.log('called')
+    write?.({
+      args: [{rewardTokenAddress: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+      rootReferral: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+      rewardPercentPerMilestone: 10,
+      totalSupply: 1000000,
+      startIn: 10,
+      endIn: 100,
+      metadata: "YourMetadataString",
+      }]
+    })
     // make a call to our backends     
   }
 
   const unwatch = useContractEvent({
-    address: '0x395E95fF2AB6c714Ab52A95274816e6648ed91C7',
-    abi: [{
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "campaign_address",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "creator",
-          "type": "address"
-        }
-      ],
-      "name": "CampaignCreated",
-      "type": "event"
-    },],
+    address: settings.fuji.HyperclusterFactory.address as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
     eventName: 'CampaignCreated',
     listener(log) {
       console.log(log);
@@ -158,6 +124,7 @@ export default function CreatePage() {
               fileInputRef={fileInputRef}
               setRange={setRange}
               handleName={handleName}
+              name={name}
               handleNextPage={() => {
                 setPage(1);
               }}
