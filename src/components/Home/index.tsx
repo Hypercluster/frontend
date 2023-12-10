@@ -19,7 +19,7 @@ export default function Home() {
           icon={faCircleInfo}
           className=" text-gray-500 text-sm my-auto mr-2 bg-white rounded-full"
         />
-        <p className="text-xs text-[#F1F1F1]">
+        <p className="text-l text-[#F1F1F1]">
           Host your own referral campaign
         </p>
       </Link>

@@ -2,18 +2,18 @@ import Image from "next/image";
 
 export default function Rules() {
   return (
-    <div className="border-b border-[#FF5906]  h-[70%] p-20 flex flex-col items-center space-y-3">
+    <div className="border-b border-[#FF5906] p-20 flex flex-col items-center space-y-3">
       <Image
         src={"/campaigns/apecoin.png"}
         width={200}
         height={200}
         alt="apecoin"
       />
-      <div className="w-[70%] pt-8">
+      <div className="w-full pt-8">
         <p className="text-[#C9BFD8] text-start text-2xl">RULES</p>
-        <div className="w-[80%] mx-auto pt-2">
+        <div className="w-full mx-auto px-4">
           <p className="text-xl text-[#C9BFD8]">
-            1. CONNECT YOUR WALLET TO PROVE YOUR &nbsp;&nbsp;&nbsp;HUMANITY
+            1. CONNECT YOUR WALLET TO PROVE YOUR HUMANITY
           </p>
           <p className="text-xl text-[#C9BFD8]">
             2. BOTS WILL BE ELIMINATED BY AI

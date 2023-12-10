@@ -37,12 +37,22 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
   const [referrer, setReferrer] = useState("");
 
   const { address: userAddress } = useAccount();
-  const { data: isUserIn } = useContractRead({
+
+  const { data: isInCampaign } = useContractRead({
     address: settings.fuji.HyperclusterImplementation.address as any,
     abi: settings.fuji.HyperclusterImplementation.abi,
     functionName: 'isInCampaign',
     args: [userAddress],
   });
+
+  // has the user referred anyone to claim rewards?
+  const { data: getReferred } = useContractRead({
+    address: settings.fuji.HyperclusterImplementation.address as any,
+    abi: settings.fuji.HyperclusterImplementation.abi,
+    functionName: 'getReferred',
+    args: [userAddress],
+  });
+
 
 
   // this triggers if you were sent via referral link 
@@ -96,33 +106,38 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
 
  
   const handleRefer = async () => {
-    if (isUserIn) {
+    if (isInCampaign) {
+      const campaign_id = settings.fuji.HyperclusterImplementation.address;
+
       const res = await fetch(settings.endpoint + "/api/generate", {
         method: 'POST',
         body: JSON.stringify({
           referrer_address: userAddress,
-          campaign_id: settings.fuji.HyperclusterImplementation.address
+          campaign_id: campaign_id
         })
       })
 
       let newParams = [...params];
-      newParams[3] = settings.endpoint + "/?ref=" + await res.text();
+      newParams[3] = settings.endpoint + `/campaign/${campaign_id}?ref=` + await res.text();
       setParams(newParams);
       setSelect("refer");
     }
   }
 
   const handleClaim = () => {
-    if (userAddress) {
+    console.log(getReferred)
+    if (getReferred) {
       setSelect("claim")
+    } else {
+      setSelect("friendsNo")
     }
   }
 
   return (
-    <div className="h-full flex justify-between ">
-      <div className=" flex-1 ">
+    <div className="h-[100%] flex justify-between ">
+      <div className="flex-1">
         <Info />
-        <Status isUserIn={isUserIn as boolean} handleConnect={handleConnect} handleRefer={handleRefer} handleClaim={handleClaim}/>
+        <Status isInCampaign={isInCampaign as boolean} handleConnect={handleConnect} handleRefer={handleRefer} handleClaim={handleClaim}/>
       </div>
       <div className="w-[1px] h-[100%] bg-[#FF5906]"></div>
       <div className="flex-1">

@@ -20,8 +20,6 @@ export default function RewardingReferrals({
   const [option3, setOption3] = useState("10");
   const [option4, setOption4] = useState("0");
   const [maxTokens, setMaxTokens] = useState("0");
-  const [estimatedValue, setEstimatedValue] = useState("0");
-
   const { address } = useAccount();
 
   const change3 = (e: any) => {
@@ -33,7 +31,6 @@ export default function RewardingReferrals({
       if (Number(e.target.value) > 100) return;
       setOption3(e.target.value);
     }
-
 
   }
 

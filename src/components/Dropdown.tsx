@@ -45,6 +45,7 @@ export default function Dropdown({
           <div className="py-1" role="none">
             {options.map((option) => (
               <a
+                key={option}
                 href="#"
                 onClick={() => {
                   setIsOpen(false);

@@ -5,7 +5,7 @@ import CampaignSetup from "@/components/Create/CampaignSetup";
 import Topbar from "@/components/Topbar";
 import RewardingReferrals from "@/components/Create/RewardingReferrals";
 import DepositRewards from "@/components/Create/DepositRewards";
-import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, useContractEvent, useAccount } from "wagmi";
+import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, useContractEvent, useAccount, useContractRead } from "wagmi";
 import { settings } from "@/config/config";
 import { IcreateCampaignParams } from "@/helpers/interface";
 import { encodeAbiParameters } from 'viem'
@@ -71,6 +71,12 @@ export default function CreatePage() {
     functionName: 'createCampaign',
   })
 
+
+  const { data: myData } = useContractRead({
+    address: settings.fuji.HyperclusterFactory.address as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
+    functionName: 'campaignImplementation'
+  })
   
    
   const { isLoading, isSuccess } = useWaitForTransaction({
@@ -79,15 +85,11 @@ export default function CreatePage() {
 
   const handleCreateCampaign = () => {
     console.log('called')
+    console.log(myData)
     write?.({
-      args: [{rewardTokenAddress: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-      rootReferral: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-      rewardPercentPerMilestone: 10,
-      totalSupply: 1000000,
-      startIn: 10,
-      endIn: 100,
-      metadata: "YourMetadataString",
-      }]
+      args: [
+
+      ]
     })
     // make a call to our backends     
   }
