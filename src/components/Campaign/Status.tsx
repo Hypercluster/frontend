@@ -7,14 +7,13 @@ export default function Status({
   handleConnect,
   handleRefer, 
   handleClaim,
-  isUserIn,
+  isInCampaign,
 } : {
   handleConnect: () => void;
   handleRefer: () => void;
   handleClaim: () => void;
-  isUserIn: boolean;
+  isInCampaign: boolean;
 }) {
-  const [passedBotCheck, setPassedBotCheck] = useState(false);
 
   const { address } = useAccount();
 
@@ -35,6 +34,8 @@ export default function Status({
     ],
   })
 
+  console.log(data);
+
   return (
     <div className="  h-[60%] p-20 flex flex-col space-y-3">
       <p className="text-[#C9BFD8] text-2xl pb-6">
@@ -43,17 +44,7 @@ export default function Status({
       </p>
       <p className="text-white text-2xl">
         <span className="text-[#FF5906]">PASSED BOT CHECK: </span>
-        {!passedBotCheck ? (
-          <>
-            <span className="text-red-600">NO/</span>
-            YES
-          </>
-        ) : (
-          <>
-            NO
-            <span className="text-green-500">/YES</span>
-          </>
-        )}
+        {isInCampaign ? <span className="text-green-500">YES</span> : <span className="text-red-600">NO</span>}
       </p>
       <p className="text-white text-2xl tracking-tighter">
         <span className="text-[#FF5906] tracking-normal">
@@ -63,15 +54,24 @@ export default function Status({
       </p>
       <p className="text-white text-2xl tracking-tighter">
         <span className="text-[#FF5906] tracking-normal">
-          REFERRED 2 FRENS:
-        </span>{" "}
-        _ _ _ _ & _ _ _ _
+          REFERRED 2 FRENS: 
+        </span>
+        <span>
+          {isError && "_ _ _ _ & _ _ _ _"}
+          {(data?.[0].result as unknown as string) != "0x0000000000000000000000000000000000000000" ? data?.[0].result : " _ _ _ _ "}
+          & 
+          {(data?.[1].result as unknown as string) != "0x0000000000000000000000000000000000000000" ? data?.[1].result : " _ _ _ _"}
+
+        </span>
+
+      
+      
       </p>
       <div className=" pt-24 flex space-x-10 tracking-tight  pb-10">
-        {isUserIn ? 
-        <p className=" text-2xl text-[#C9BFD8] bold"> CONNECTED </p>
+        {isInCampaign ? 
+        <p className=" text-2xl text-[#C9BFD8] bold"> JOINED </p>
         :
-        <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleConnect}> CONNECT </p>
+        <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleConnect}> JOIN </p>
         }
         <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleRefer}> REFER </p>
         <p className=" text-2xl text-[#C9BFD8] hover:text-[#FF5906] hover:cursor-pointer" onClick={handleClaim}> CLAIM </p>

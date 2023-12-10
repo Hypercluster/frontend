@@ -13,7 +13,7 @@ export default function ReferModal({
       </p>
     
       <div className="flex justify-center">
-        <button onClick={async () => {await navigator.clipboard.writeText(params[0])}}
+        <button onClick={async () => {await navigator.clipboard.writeText(params[3])}}
           className=" py-1 px-8  rounded-xl text-white text-xl text-center tracking-tighter mt-1 truncate"
         >
           {params[3]}
@@ -21,7 +21,7 @@ export default function ReferModal({
       </div>
       <p className="text-black font-bold text-md text-center my-8 hover:text-white hover:cursor-pointer"
           onClick={async () => {
-            await navigator.clipboard.writeText(params[0])
+            await navigator.clipboard.writeText(params[3])
             close()
           }}
         >
