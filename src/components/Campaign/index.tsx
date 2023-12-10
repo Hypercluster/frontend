@@ -63,7 +63,11 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
   }, [refCode])
 
   const decodeRefCode = async (code: string) => {
-    const res = await fetch(settings.endpoint + `/api/resolve?ref=${code}`);
+    const res = await fetch(settings.endpoint + `/api/resolve?ref=${code}`, {
+      headers: {
+        api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL"
+      }
+    });
     const { referrer, referring, campaign_id} = await res.json()
 
     let newParams = [...params];
@@ -111,6 +115,9 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
 
       const res = await fetch(settings.endpoint + "/api/generate", {
         method: 'POST',
+        headers: {
+          api_key: '8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL'
+        },
         body: JSON.stringify({
           referrer_address: userAddress,
           campaign_id: campaign_id
@@ -137,7 +144,7 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
     <div className="h-[100%] flex justify-between ">
       <div className="flex-1">
         <Info />
-        <Status isInCampaign={isInCampaign as boolean} handleConnect={handleConnect} handleRefer={handleRefer} handleClaim={handleClaim}/>
+        <Status isInCampaign={isInCampaign as boolean} getReferred={getReferred as []} handleConnect={handleConnect} handleRefer={handleRefer} handleClaim={handleClaim}/>
       </div>
       <div className="w-[1px] h-[100%] bg-[#FF5906]"></div>
       <div className="flex-1">

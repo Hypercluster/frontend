@@ -5,7 +5,7 @@ import Leftbar from "@/components/Leftbar";
 import Topbar from "@/components/Topbar";
 import { settings } from "@/config/config";
 import { useState } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 
 
 export interface cardProps {
@@ -18,6 +18,15 @@ export default function DashboardPage() {
   const { address } = useAccount(); 
   const [page, setPage] = useState(0);
   const [selectedCard, setSelectedCard] = useState<null | cardProps>(null);
+
+  const [realCampaigns, setRealCampaigns] = useState<any[]>([])
+
+  const { data, isError, isLoading } = useContractRead({
+    address: settings.fuji.HyperclusterFactory.address as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
+    functionName: 'GetMyCampaigns',
+    args: [address]
+  })
   
   return (
     <div className="flex justify-start h-screen">
@@ -29,13 +38,16 @@ export default function DashboardPage() {
               <div className="flex flex-col h-full">
                 <div className="text-2xl text-[#FF5906]">
                   <p>My Campaigns</p>
+                  {realCampaigns.map(h => {
+                    return <LongCard title={h.title} launchDate={h.launchDate} onClick={() => setSelectedCard(h)} />
+                  })}
                   {settings.mockCampaigns.map(x => {
                     return <LongCard title={x.title} launchDate={x.launchDate} onClick={() => setSelectedCard(x)}/>
                   })}
                 </div>
               </div>
               :
-              <div>
+              <div className="h-[100%]">
                 <button className="text-white" onClick={() => setSelectedCard(null)}> {"< BACK"}</button> 
                 <Details selectedCard={selectedCard} />
               </div>        

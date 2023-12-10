@@ -1,3 +1,4 @@
+import { settings } from "@/config/config";
 import { HyperclusterABI } from "@/helpers/abi";
 import { useState } from "react";
 import { useAccount, useContractReads } from "wagmi";
@@ -8,33 +9,17 @@ export default function Status({
   handleRefer, 
   handleClaim,
   isInCampaign,
+  getReferred,
 } : {
   handleConnect: () => void;
   handleRefer: () => void;
   handleClaim: () => void;
   isInCampaign: boolean;
+  getReferred: string[];
 }) {
 
   const { address } = useAccount();
 
-  const { data, isError, isLoading } = useContractReads({
-    contracts: [
-      {
-        address: '0x954F64310224f66Dc99847718B309e3EB72DA64A',
-        abi: HyperclusterABI as any,
-        functionName: 'referrals',
-        args: [address as any, 0],
-      },
-      {
-        address: '0x954F64310224f66Dc99847718B309e3EB72DA64A',
-        abi: HyperclusterABI as any,
-        functionName: 'referrals',
-        args: [address as any, 1],
-      },
-    ],
-  })
-
-  console.log(data);
 
   return (
     <div className="  h-[60%] p-20 flex flex-col space-y-3">
@@ -53,15 +38,13 @@ export default function Status({
         _ _ _ _
       </p>
       <p className="text-white text-2xl tracking-tighter">
-        <span className="text-[#FF5906] tracking-normal">
-          REFERRED 2 FRENS: 
+        <span className="text-[#FF5906] tracking-normal pr-2">
+          REFERRED 2 FRENS:  
         </span>
         <span>
-          {isError && "_ _ _ _ & _ _ _ _"}
-          {(data?.[0].result as unknown as string) != "0x0000000000000000000000000000000000000000" ? data?.[0].result : " _ _ _ _ "}
-          & 
-          {(data?.[1].result as unknown as string) != "0x0000000000000000000000000000000000000000" ? data?.[1].result : " _ _ _ _"}
-
+          {getReferred.length < 1 && "_ _ _ _ & _ _ _ _"}
+          {(getReferred.length == 1) && getReferred[0] + " & _ _ _ _"}
+          {(getReferred.length > 1) && getReferred[0] +" & " + getReferred[1]}
         </span>
 
       

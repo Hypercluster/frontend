@@ -55,7 +55,27 @@ export const settings = {
     },  
   ],
   mockTriggers: [{
+    cah: "0xa6ed97be5e377a13dcaddb0f684192fa2c7ccbbd85115f7fd5c2f0179f3a6056",
+    condition: "Price +1%",
+    reward: 50,
+    activity: "16 hours ago",
+    hash: "0xa6ed97be5e377a13dcaddb0f684192fa2c7ccbbd85115f7fd5c2f0179f3a6056"
 
+  },
+  {
+    cah: "0xaa62e9ce6a7424391af07199e6020c20a1298dc7facac98c07b5281ccaca45c6",
+    condition: "Price +1%",
+    reward: 100,
+    activity: "5 days ago",
+    hash: "0xaa62e9ce6a7424391af07199e6020c20a1298dc7facac98c07b5281ccaca45c6"
+
+  },
+  {
+    cah: "0xcbaf0341d0e9ec3e3d1266189fca44109fe63c6daf1e26ee3755f70cdf55a21b",
+    condition: "Price +1%",
+    reward: 100,
+    activity: "2 weeks ago",
+    hash: "0xcbaf0341d0e9ec3e3d1266189fca44109fe63c6daf1e26ee3755f70cdf55a21b"
   }]
 }
 
