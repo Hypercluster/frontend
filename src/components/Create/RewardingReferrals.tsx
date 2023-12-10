@@ -54,7 +54,7 @@ export default function RewardingReferrals({
         <p className="text-white text-lg mt-3">
           All tokens are securely stored in a safe
         </p>
-        <div className="my-16 flex justify-around text-lg text-white mr-8 items-center">
+        <div className="my-16 flex justify-around gap-2 text-lg text-white mr-8 items-center">
           <p>As</p>
           <Dropdown
             options={["Price", "Volume", "TVL"]}
@@ -105,36 +105,38 @@ export default function RewardingReferrals({
         </div>
         <div className="flex justify-between ml-4 mt-12 mr-16 ">
           <div>
+            <p className="text-white my-4">
+              Referral Rewards Distribution
+            </p>
             <Image
               src={"/earnings.png"}
               width={800}
               height={800}
               alt="earnings"
             />
-            <p className="text-white text-center mt-2">
-              Example of 10,000 tokens
-            </p>
           </div>
           <div className="ml-8">
             <p className="text-2xl text-white ">Rules</p>
             <ul className="list-disc text-[#C3C3C3] ml-8 mt-5 text-lg">
               <li>
-                Tier A only has 1 User and is awarded with 1X upon trigger
-              </li>
-              <li>X is 1% of total rewarded tokens by default</li>
-              <li>
-                When there isn’t enough tokens to reward users, the campaign
-                will end.
+                X is 0.1% of total rewarded tokens per release.
               </li>
               <li>
-                Hypercluster’s anti-bot allow only each ‘entity’ to register
+                When there isn't enough tokens to reward users, the campaign will end. 
+              </li>
+              <li> Token claiming is first come first serve</li>
+              <li>
+                Unclaimed tokens stay locked until next trigger.
+              </li>
+              <li>
+                Hypercluster’s anti-bot allow each ‘entity’ to register only 
                 once.
               </li>
               <li>
                 If tokens are unused, the customer can send a request for tokens
                 to be returned.
               </li>
-              <li>Protocol Fee: 5% of all claimed rewards</li>
+              <li>Protocol Fee: 2.5% of all claimed rewards</li>
             </ul>
           </div>
         </div>
