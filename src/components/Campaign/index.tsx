@@ -54,13 +54,13 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
   });
 
 
-
   // this triggers if you were sent via referral link 
   useEffect(() => {
     if (refCode) {
       decodeRefCode(refCode);
     }
   }, [refCode])
+
 
   const decodeRefCode = async (code: string) => {
     const res = await fetch(settings.endpoint + `/api/resolve?ref=${code}`, {
@@ -77,7 +77,6 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
     setSelect("referred")
 
   }
-
 
   const { data, isLoading, isSuccess, write } = useContractWrite({
     address: settings.fuji.HyperclusterImplementation.address as any,

@@ -8,8 +8,8 @@ export default function Status({
   handleConnect,
   handleRefer, 
   handleClaim,
-  isInCampaign,
-  getReferred,
+  isInCampaign = false,
+  getReferred = [],
 } : {
   handleConnect: () => void;
   handleRefer: () => void;
@@ -17,8 +17,6 @@ export default function Status({
   isInCampaign: boolean;
   getReferred: string[];
 }) {
-
-  const { address } = useAccount();
 
 
   return (
@@ -29,6 +27,7 @@ export default function Status({
       </p>
       <p className="text-white text-2xl">
         <span className="text-[#FF5906]">PASSED BOT CHECK: </span>
+        
         {isInCampaign ? <span className="text-green-500">YES</span> : <span className="text-red-600">NO</span>}
       </p>
       <p className="text-white text-2xl tracking-tighter">
@@ -42,13 +41,11 @@ export default function Status({
           REFERRED 2 FRENS:  
         </span>
         <span>
-          {getReferred.length < 1 && "_ _ _ _ & _ _ _ _"}
-          {(getReferred.length == 1) && getReferred[0] + " & _ _ _ _"}
-          {(getReferred.length > 1) && getReferred[0] +" & " + getReferred[1]}
+        {getReferred.length < 1 && " _ _ _ _ & _ _ _ _" }
+        {getReferred.length == 1 && getReferred[0] + " & _ _ _ _" }
+        {getReferred.length > 1 && getReferred[0] + " & " + getReferred[1] }
         </span>
 
-      
-      
       </p>
       <div className=" pt-24 flex space-x-10 tracking-tight  pb-10">
         {isInCampaign ? 
