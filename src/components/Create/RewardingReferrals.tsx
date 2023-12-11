@@ -1,19 +1,16 @@
 import { useState } from "react";
 import Dropdown from "../Dropdown";
 import Image from "next/image";
-import { useAccount } from "wagmi";
+import { erc20ABI, useAccount, useContractWrite } from "wagmi";
 import Input from "../Input";
+import { settings } from "@/config/config";
 
 export default function RewardingReferrals({
   handleNextPage,
-  handleCreateCampaign,
-  isLoading,
-  isSuccess
+  name
 }: {
   handleNextPage: () => void;
-  handleCreateCampaign: () => void;
-  isLoading: boolean;
-  isSuccess: boolean;
+  name: string;
 }) {
   const [option1, setOption1] = useState("Price");
   const [option2, setOption2] = useState("Increases");
@@ -43,6 +40,73 @@ export default function RewardingReferrals({
       setOption4(e.target.value);
     }
   }
+
+  const { data: dataApprove, write } = useContractWrite({
+    address: settings.sepolia.CCIPBNM as any, // tokenAddress as any, 
+    abi: erc20ABI,
+    functionName: "approve", 
+  })
+  
+  const handleApprove = () => {
+    write({
+      args: [settings.sepolia.HyperclusterFactory.address as any, BigInt("200000000000000000000000")],
+    });
+
+  }
+
+
+
+
+  const { data: dataCreate, write: writeCreate } = useContractWrite({
+    address: settings.sepolia.HyperclusterFactory.address as any,
+    abi: settings.sepolia.HyperclusterFactory.abi,
+    functionName: 'createCampaign',
+  })
+
+  const handleWrite = () => {
+    console.log(settings.sepolia.HyperclusterFactory.address as any)
+    console.log(address)
+
+  //   struct CreateCampaignParams{
+  //     string name;
+  //     string metadata;
+  //     address rewardTokenAddress;
+  //     address rootReferral;
+  //     uint256 rewardPercentPerMilestone;
+  //     uint256 totalSupply;
+  //     uint256 increaseRate;
+  //     uint256 startIn;
+  //     uint256 endIn;
+  //     address dataFeedAddress;
+  // }
+
+  // ["Hotpot","metadata","0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05","0x0429A2Da7884CA14E53142988D5845952fE4DF6a","10","20000000000000000","10","0","1000000","0x694AA1769357215DE4FAC081bf1f309aDC325306"]
+
+  // [[
+  //   name, 
+  //   "metadatastring",
+  //   settings.sepolia.CCIPBNM,
+  //   address,
+  //   "1",
+  //   "1000000000000000000", 
+  //   "200000000000000000000000",
+  //   "10",
+  //   "0",
+  //   "1000",
+  //   "0x3E72a614A4A14d3AeD58D76A7A5E886B2376c96A"
+  // ]]
+
+    writeCreate({
+      args: [[name,"metadata", settings.sepolia.CCIPBNM, address,"10","20000000000000000","10","0","1000000","0x694AA1769357215DE4FAC081bf1f309aDC325306"]]
+    })
+  }
+
+
+  // const { isLoading, isSuccess } = useWaitForTransaction({
+  //   hash: data?.hash,
+  // })
+
+
 
  
   return (
@@ -140,14 +204,25 @@ export default function RewardingReferrals({
             </ul>
           </div>
         </div>
-        <div className="relative">
+        <div>
+      
           <button
-            onClick={handleCreateCampaign}
+            onClick={handleApprove}
             disabled={!address}
             className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-14 bottom-[1px]"
           >
-          
-          { isLoading ? "Deploying..." : "Deploy" }
+            APPROVE 
+          </button>
+
+        </div>
+        
+        <div className="relative">        
+          <button
+              onClick={handleWrite}
+              disabled={!address}
+              className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-14 bottom-[1px]"
+            >
+            Deploy
           </button>
           <button onClick={handleNextPage}>
               {"->"}

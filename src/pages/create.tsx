@@ -62,27 +62,7 @@ export default function CreatePage() {
     fileInputRef.current?.click();
   };
 
-  const { address: userAddress } = useAccount(); 
-
   
-  const { data, write } = useContractWrite({
-    address: settings.fuji.HyperclusterFactory.address as any,
-    abi: settings.fuji.HyperclusterFactory.abi,
-    functionName: 'createCampaign',
-    // onError(error) {
-    //   write2({
-    //     args: [
-    //       [name, "metadata", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-    //       0, 0, 0, 0, 0, "0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED"], 0
-    //     ]
-    //   })
-    // }
-  })
-
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
-  })
-
   // string name;
   //       string metadata;
   //       address rewardTokenAddress;
@@ -94,26 +74,10 @@ export default function CreatePage() {
   //       uint256 endIn;
   //       address dataFeedAddress;
 
-  // rewardTokenAddress: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-  // rootReferral: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-  // rewardPercentPerMilestone: 10,
-  // totalSupply: 1000000,
-  // startIn: 10,
-  // endIn: 100,
-  // metadata: "YourMetadataString",
-
-  const handleCreateCampaign = () => {
-    write?.({
-      args: [
-        [name, "metadata", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-        0, 0, 0, 0, 0, "0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED"], 0
-      ]
-    })  
-  }
 
   const unwatch = useContractEvent({
-    address: settings.fuji.HyperclusterFactory.address as any,
-    abi: settings.fuji.HyperclusterFactory.abi,
+    address: settings.sepolia.HyperclusterFactory.address as any,
+    abi: settings.sepolia.HyperclusterFactory.abi,
     eventName: 'CampaignCreated',
     listener(log) {
       console.log(log);
@@ -153,9 +117,8 @@ export default function CreatePage() {
               handleNextPage={() => {
                 setPage(2);
               }}
-              handleCreateCampaign={handleCreateCampaign}
-              isLoading={isLoading}
-              isSuccess={isSuccess}
+              name={name}
+
             />
           ) : (
             <DepositRewards

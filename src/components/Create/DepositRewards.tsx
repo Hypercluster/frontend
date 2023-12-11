@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import DeployedModal from "../modals/DeployedModal";
 import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, erc20ABI, useContractRead, useAccount } from "wagmi";
+import { settings } from "@/config/config";
+
 
 export default function DepositRewards({
   safeAddress,
@@ -32,13 +34,6 @@ export default function DepositRewards({
 
   const { address } = useAccount();
 
-  const { data: allowanceData, isError: allowanceIsError, isLoading: allowanceIsLoading } = useContractRead({
-    address: "0x779877A7B0D9E8603169DdbD7836e478b4624789", // tokenAddress as any, 
-    abi: erc20ABI,
-    functionName: "allowance", 
-    args: [address as any, safeAddress as any]
-
-  })
   const copyTextToClipboard = () => {
     const textToCopy = document.getElementById("copyText")?.innerText;
 
@@ -81,19 +76,6 @@ export default function DepositRewards({
     // make a call to our backends     
   }
 
-  const { config: approveConfig } = usePrepareContractWrite({
-    address: tokenAddress as any,
-    abi: erc20ABI,
-    functionName: 'approve',
-    args: [safeAddress as any, BigInt(10)]
-  })
-
-  const { data: approveData, write: approveWrite } = useContractWrite(approveConfig);
-
-  const handleAllowance = () => {
-    approveWrite?.();
-    console.log(approveData)
-  }
 
 
   return (
@@ -158,11 +140,11 @@ export default function DepositRewards({
               />
             </div>
             <div className="flex mt-16">
-          
+
               <button
                className="bg-[#FF5906] font-semibold text-lg py-2 px-4 rounded-xl text-white"
-               onClick={(allowanceData == BigInt(0)) ? handleAllowance : handleFundCampaign}
-              > {(allowanceData == BigInt(0)) ? "APPROVE ALLOWANCE" : "FUND CAMPAIGN" }</button> 
+               onClick={handleFundCampaign}
+              > FUND CAMPAIGN </button> 
               
               {depositIsSuccess && isOpen && (
                 <>

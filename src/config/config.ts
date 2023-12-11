@@ -1,6 +1,6 @@
 // contract addresses
 
-import { HyperclusterABI, HyperclusterFactoryABI } from "@/helpers/abi";
+import { HyperclusterABI, HyperclusterFactoryABI, HyperclusterFactorySepolia } from "@/helpers/abi";
 
 export const settings = {
   fuji: {
@@ -18,7 +18,17 @@ export const settings = {
       explorerURL: 'https://testnet.snowtrace.io/address/0xd987e21860d9fb0b39D410331e394c9613B9E6c5',
       abi: HyperclusterFactoryABI
 
-    }
+    },
+  },
+  sepolia: {
+    HyperclusterImplementation: {
+      abi: HyperclusterABI,
+    },
+    HyperclusterFactory: {
+      address: "0x8Bbc1A9c2C746B1499aAef93c591e7C6ACfa1c7f",
+      abi: HyperclusterFactorySepolia
+    },
+    CCIPBNM: "0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05"
   },
   endpoint: (process.env.NEXT_PUBLIC_VERCEL_ENV) ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000',
   mockCampaigns: [
