@@ -69,24 +69,18 @@ export default function CreatePage() {
     address: settings.fuji.HyperclusterFactory.address as any,
     abi: settings.fuji.HyperclusterFactory.abi,
     functionName: 'createCampaign',
-    onError(error) {
-      write2({
-        args: [
-          [name, "metadata", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
-          0, 0, 0, 0, 0, "0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED"], 0
-        ]
-      })
-    }
+    // onError(error) {
+    //   write2({
+    //     args: [
+    //       [name, "metadata", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+    //       0, 0, 0, 0, 0, "0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED"], 0
+    //     ]
+    //   })
+    // }
   })
 
-  const { data: data2, write: write2 } = useContractWrite({
-    address: settings.fuji.HyperclusterFactory.fakeAddress as any,
-    abi: settings.fuji.HyperclusterFactory.abi,
-    functionName: 'createCampaign',
-  })
-   
   const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data2?.hash,
+    hash: data?.hash,
   })
 
   // string name;
@@ -127,19 +121,6 @@ export default function CreatePage() {
       setTxHash((log[0] as any).transactionHash)
       setPage(2);
       unwatch?.()  
-    },
-  })
-
-  const unwatch2 = useContractEvent({
-    address: settings.fuji.HyperclusterFactory.fakeAddress as any,
-    abi: settings.fuji.HyperclusterFactory.abi,
-    eventName: 'CampaignCreated',
-    listener(log) {
-      console.log(log);
-      setSafeAddress((log[0] as any).args?.campaign_address)
-      setTxHash((log[0] as any).transactionHash)
-      setPage(2);
-      unwatch2?.()  
     },
   })
 

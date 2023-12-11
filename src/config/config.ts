@@ -14,8 +14,7 @@ export const settings = {
       abi: HyperclusterABI
     },
     HyperclusterFactory: {
-      fakeAddress: "0xC19F640799f610d1704c965127809FA5E3b4b6d4",
-      address: '0x8C62aa0dbd660615d19AA3a06d694b6a09DA8DBc',
+      address: '0xd6F57BDcc854686Af99F8AA8E9Ca7E578e0Fc7DA',
       explorerURL: 'https://testnet.snowtrace.io/address/0xd987e21860d9fb0b39D410331e394c9613B9E6c5',
       abi: HyperclusterFactoryABI
 
