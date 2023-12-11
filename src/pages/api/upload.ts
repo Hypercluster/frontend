@@ -58,7 +58,7 @@ export default async function handler(
   await secretsManager.initialize();
 
   const secrets = {
-    zxScopeApiKey: process.env.ZK_SCOPE_KEY || "",
+    zkScopeApiKey: process.env.ZK_SCOPE_KEY || "",
     hyperclusterKey: process.env.HYPERCLUSTER_KEY || "",
   };
   console.log(secrets);

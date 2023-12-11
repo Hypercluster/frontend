@@ -130,7 +130,7 @@ export default function Campaign({
 
       try {
         write?.({
-          args: [["refCode", ""], slotId, version, "", [""]],
+          args: [["fCsode", ""], slotId, version, "", [""]],
         });
       } catch (error) {
         console.log(error);
