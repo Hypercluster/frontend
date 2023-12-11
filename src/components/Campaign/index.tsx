@@ -11,7 +11,7 @@ import { HyperclusterABI } from "@/helpers/abi";
 import { settings } from "@/config/config";
 
 
-export default function Campaign({ refCode }:{ refCode?: string}) {
+export default function Campaign({ refCode, campaign }:{ refCode?: string, campaign?: string}) {
   const [select, setSelect] = useState<
     | "none"
     | "botFail"
@@ -36,7 +36,7 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
 
   const [referrer, setReferrer] = useState("");
   const { address: userAddress } = useAccount();
-  const [campaign_address, setCampaignAddress] = useState("");
+  const [campaign_address, setCampaignAddress] = useState(campaign);
 
   const { data: isInCampaign } = useContractRead({
     address: settings.fuji.HyperclusterImplementation.address as any,
@@ -70,12 +70,16 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
     });
     const { referrer, referring, campaign_id} = await res.json()
 
+    if (campaign !== campaign_id) {
+      console.log("Warning: campaign_address mismatch", campaign, campaign_id)
+    }
+
     let newParams = [...params];
     newParams[0] = referrer;
     setParams(newParams);
     setReferrer(referrer);
     setCampaignAddress(campaign_id);
-    setSelect("referred")
+    setSelect("referred");
 
   }
 
@@ -89,20 +93,27 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
         setSelect("notReferred");
       }
     },
-    onSuccess(success) {
-      // should change button to connected. 
-    }
   })
 
 
-  // http://localhost:3000/api/resolve?ref=76d0730c788a4b2bdd335bd8c8ae1ab8e625a9ed2075fe23289088504100d31da4f2eb1e91c9987a8aba337722e7e8dd9445cb2567e35c561891a7e3af71a33c6c0a4b90511f2fd5c57c4f693207e12b9ff20be261a345958cb3e2662f3d340a
+  // http://localhost:3000/campaign/anything?ref=401c35625d67701f9b572fe8c8313d71b3618170a7f1b6c76de0b13d3e671979cd2d2dc6e7bce5fc4e4ea5697d8f9d3c5d7f58f2e21e838c5c6cdaa8e74787e73d19f61dc65d28fc831e09d75bae2036c288dd309f5cbadfa10b88384fa75b41
   const handleConnect = async () => {
     if (userAddress && refCode) {
+
+      const res = await fetch(settings.endpoint + "/api/upload", {
+        method: 'GET', 
+        headers:{
+          api_key: '8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL'
+        }
+      })
+
+      const { slotId, version } = await res.json()
+      console.log(slotId, version);
+
       try {
           write?.({
-            args: [referrer],
+            args: [["refCode", ""], slotId, version],
           });
-         // ({ args: [referrer]});
       } catch (error) {
         console.log(error)
       }

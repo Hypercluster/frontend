@@ -1,6 +1,6 @@
 // contract addresses
 
-import { HyperclusterABI, HyperclusterFactoryABI, HyperclusterFactorySepolia } from "@/helpers/abi";
+import { HyperclusterABI, HyperclusterFactoryABI, HyperclusterFactorySepolia, HyperclusterSepolia } from "@/helpers/abi";
 
 export const settings = {
   fuji: {
@@ -9,12 +9,12 @@ export const settings = {
       explorerURL: 'https://testnet.snowtrace.io/address/0x363682C8b357A7f2bD7a0d6814E09DC25bBADE13',
     },
     HyperclusterImplementation: {
-      address: '0x160423CF968558D35D9296eAee27b622d69400C6',
-      explorerURL: 'https://testnet.snowtrace.io/address/0x160423CF968558D35D9296eAee27b622d69400C6',
+      address: '0xdbb7b4F9f76396662CEc08f76CadA37514458280',
+      explorerURL: 'https://testnet.snowtrace.io/address/0xdbb7b4F9f76396662CEc08f76CadA37514458280',
       abi: HyperclusterABI
     },
     HyperclusterFactory: {
-      address: '0xd6F57BDcc854686Af99F8AA8E9Ca7E578e0Fc7DA',
+      address: '0x0324447C1c04119D973685581fb041E0eB17ca40',
       explorerURL: 'https://testnet.snowtrace.io/address/0xd987e21860d9fb0b39D410331e394c9613B9E6c5',
       abi: HyperclusterFactoryABI
 
