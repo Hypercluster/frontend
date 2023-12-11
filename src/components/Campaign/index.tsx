@@ -5,7 +5,7 @@ import Rules from "./Rules";
 import Status from "./Status";
 import Modal from "../modals/Modal";
 
-import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, erc20ABI, useContractRead, useAccount } from "wagmi";
+import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, erc20ABI, useContractRead, useAccount, useNetwork, useContractEvent } from "wagmi";
 import { resolveReferralLink } from "@/helpers/referrals";
 import { HyperclusterABI } from "@/helpers/abi";
 import { settings } from "@/config/config";
@@ -35,8 +35,8 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
   ]);
 
   const [referrer, setReferrer] = useState("");
-
   const { address: userAddress } = useAccount();
+  const [campaign_address, setCampaignAddress] = useState("");
 
   const { data: isInCampaign } = useContractRead({
     address: settings.fuji.HyperclusterImplementation.address as any,
@@ -74,10 +74,12 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
     newParams[0] = referrer;
     setParams(newParams);
     setReferrer(referrer);
+    setCampaignAddress(campaign_id);
     setSelect("referred")
 
   }
 
+  // TODO: change to add referrers 
   const { data, isLoading, isSuccess, write } = useContractWrite({
     address: settings.fuji.HyperclusterImplementation.address as any,
     abi: settings.fuji.HyperclusterImplementation.abi,
@@ -131,13 +133,27 @@ export default function Campaign({ refCode }:{ refCode?: string}) {
   }
 
   const handleClaim = () => {
-    console.log(getReferred)
-    if (getReferred) {
-      setSelect("claim")
-    } else {
-      setSelect("friendsNo")
-    }
+
+    setSelect("claim")
+
+    // console.log(getReferred)
+    // if (getReferred) {
+    //   setSelect("claim")
+    // } else {
+    //   setSelect("friendsNo")
+    // }
   }
+
+  const unwatch = useContractEvent({
+    address: campaign_address as any,
+    abi: settings.sepolia.HyperclusterImplementation.abi,
+    eventName: 'RewardsClaimed',
+    listener(log) {
+      console.log(log);
+      unwatch?.()  
+    },
+  })
+
 
   return (
     <div className="h-[100%] flex justify-between ">

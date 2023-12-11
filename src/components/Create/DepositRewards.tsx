@@ -32,7 +32,6 @@ export default function DepositRewards({
     QRCode.toDataURL(`https://sepolia.etherscan.io/address/${safeAddress}`).then(setQr);
   };
 
-  const { address } = useAccount();
 
   const copyTextToClipboard = () => {
     const textToCopy = document.getElementById("copyText")?.innerText;

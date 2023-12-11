@@ -5,7 +5,8 @@ import Leftbar from "@/components/Leftbar";
 import Topbar from "@/components/Topbar";
 import { settings } from "@/config/config";
 import { useState } from "react";
-import { useAccount, useContractRead } from "wagmi";
+import { useAccount, useContractRead, useContractReads, useNetwork } from "wagmi";
+import { MyCampaigns } from "@/components/Dashboard/MyCampaigns";
 
 
 export interface cardProps {
@@ -13,19 +14,18 @@ export interface cardProps {
   launchDate: string,
 }
 
+
 export default function DashboardPage() {
 
-  const { address } = useAccount(); 
+
   const [page, setPage] = useState(0);
   const [selectedCard, setSelectedCard] = useState<null | cardProps>(null);
 
   const [realCampaigns, setRealCampaigns] = useState<any[]>([])
 
-  const { data, isError, isLoading } = useContractRead({
-    address: settings.fuji.HyperclusterFactory.address as any,
-    abi: settings.fuji.HyperclusterFactory.abi,
-    functionName: 'getMyCampaigns',
-  })
+
+
+
   
   return (
     <div className="flex justify-start h-screen">
@@ -37,9 +37,8 @@ export default function DashboardPage() {
               <div className="flex flex-col h-full">
                 <div className="text-2xl text-[#FF5906]">
                   <p>My Campaigns</p>
-                  {realCampaigns.map(h => {
-                    return <LongCard key={h.title} title={h.title} launchDate={h.launchDate} onClick={() => setSelectedCard(h)} />
-                  })}
+                  <MyCampaigns />
+                
                   {settings.mockCampaigns.map(x => {
                     return <LongCard key={x.title} title={x.title} launchDate={x.launchDate} onClick={() => setSelectedCard(x)}/>
                   })}

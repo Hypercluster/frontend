@@ -1,5 +1,8 @@
+import { useContractWrite, useNetwork, useAccount } from "wagmi";
 import Dropdown from "../Dropdown";
 import { useState } from "react";
+import { settings } from "@/config/config";
+
 
 export default function ClaimModal({
   params,
@@ -10,6 +13,27 @@ export default function ClaimModal({
 }) {
   const options = ['ETH', 'OPTIMISM', 'ARBITRUM', 'POLYGON', 'BNB', 'BASE']
   const [curOption, setCurOption] = useState(options[0]);
+
+  const { address } = useAccount()
+
+
+  // TODO: cant get into a campaign page without a referral code
+  const { data, write } = useContractWrite({
+    address: settings.sepolia as any,
+    abi: settings.sepolia.HyperclusterImplementation.abi,
+  })
+
+  
+
+  
+  // TODO: also fix this
+  const handleClaim = () =>{
+    write({
+      args: [address, "destinationSelector"]
+    })
+  }
+
+
   return (
     <>
       <p className="text-black font-bold text-xl text-center mt-6">
@@ -22,7 +46,7 @@ export default function ClaimModal({
         <Dropdown options={options} selectedOption={curOption} setOption={(e) => setCurOption(e)} />
         <button
           className="py-1 px-12 rounded-xl text-white font-bold text-xl text-center tracking-tighter mb-2 mt-4"
-          onClick={() => close()}
+          onClick={handleClaim}
         >
           CLAIM
         </button>

@@ -16,6 +16,9 @@ export default function CreatePage() {
 
   const [name, setName] = useState("");
 
+
+
+  // 
   const [range, setRange] = useState([
     { startDate: new Date(), endDate: addDays(new Date(), 7) },
   ]);
@@ -82,14 +85,13 @@ export default function CreatePage() {
     listener(log) {
       console.log(log);
       setSafeAddress((log[0] as any).args?.campaign_address)
-      setTxHash((log[0] as any).transactionHash)
       setPage(2);
       unwatch?.()  
     },
   })
 
-  const [safeAddress, setSafeAddress] = useState("0xA0CC630Fe3d91e77769f69406c042CCe53f1acD0")
-  const [txHash, setTxHash] = useState("");
+  const [safeAddress, setSafeAddress] = useState("")
+ 
 
   return (
     <div className="flex justify-start  h-screen">
