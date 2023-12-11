@@ -1,2105 +1,2470 @@
-export const HyperclusterFactorySepolia = [{"inputs":[{"internalType":"address","name":"_campaignImplementation","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"Create2EmptyBytecode","type":"error"},{"inputs":[],"name":"Create2FailedDeployment","type":"error"},{"inputs":[{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"needed","type":"uint256"}],"name":"Create2InsufficientBalance","type":"error"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"campaign","type":"address"},{"indexed":false,"internalType":"address","name":"rewardTokenAddress","type":"address"},{"indexed":false,"internalType":"address","name":"rootReferral","type":"address"},{"indexed":false,"internalType":"uint256","name":"rewardPercentPerMilestone","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tokenAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"startTimestamp","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"endTimestamp","type":"uint256"}],"name":"CampaignCreated","type":"event"},{"inputs":[],"name":"CCIP_BNM_TOKEN_ADDRESS","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LINK_TOKEN","outputs":[{"internalType":"contract LinkTokenInterface","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"UPKEEP_REGISTRAR","outputs":[{"internalType":"contract AutomationRegistrarInterface","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"campaign","type":"address"}],"name":"campaignExists","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"campaignImplementation","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"campaigns","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"components":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"metadata","type":"string"},{"internalType":"address","name":"rewardTokenAddress","type":"address"},{"internalType":"address","name":"rootReferral","type":"address"},{"internalType":"uint256","name":"rewardPercentPerMilestone","type":"uint256"},{"internalType":"uint256","name":"totalSupply","type":"uint256"},{"internalType":"uint256","name":"increaseRate","type":"uint256"},{"internalType":"uint256","name":"startIn","type":"uint256"},{"internalType":"uint256","name":"endIn","type":"uint256"},{"internalType":"address","name":"dataFeedAddress","type":"address"}],"internalType":"struct CreateCampaignParams","name":"params","type":"tuple"}],"name":"createCampaign","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getMyCampaigns","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nonce","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"safeImplementation","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"}];
+export const HyperclusterFactorySepolia = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_campaignImplementation",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  { inputs: [], name: "Create2EmptyBytecode", type: "error" },
+  { inputs: [], name: "Create2FailedDeployment", type: "error" },
+  {
+    inputs: [
+      { internalType: "uint256", name: "balance", type: "uint256" },
+      { internalType: "uint256", name: "needed", type: "uint256" },
+    ],
+    name: "Create2InsufficientBalance",
+    type: "error",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "campaign",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "rewardTokenAddress",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "rootReferral",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "rewardPercentPerMilestone",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "tokenAmount",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "startTimestamp",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "endTimestamp",
+        type: "uint256",
+      },
+    ],
+    name: "CampaignCreated",
+    type: "event",
+  },
+  {
+    inputs: [],
+    name: "CCIP_BNM_TOKEN_ADDRESS",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "LINK_TOKEN",
+    outputs: [
+      {
+        internalType: "contract LinkTokenInterface",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "UPKEEP_REGISTRAR",
+    outputs: [
+      {
+        internalType: "contract AutomationRegistrarInterface",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "admin",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "campaign", type: "address" }],
+    name: "campaignExists",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "campaignImplementation",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "campaigns",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        components: [
+          { internalType: "string", name: "name", type: "string" },
+          { internalType: "string", name: "metadata", type: "string" },
+          {
+            internalType: "address",
+            name: "rewardTokenAddress",
+            type: "address",
+          },
+          { internalType: "address", name: "rootReferral", type: "address" },
+          {
+            internalType: "uint256",
+            name: "rewardPercentPerMilestone",
+            type: "uint256",
+          },
+          { internalType: "uint256", name: "totalSupply", type: "uint256" },
+          { internalType: "uint256", name: "increaseRate", type: "uint256" },
+          { internalType: "uint256", name: "startIn", type: "uint256" },
+          { internalType: "uint256", name: "endIn", type: "uint256" },
+          { internalType: "address", name: "dataFeedAddress", type: "address" },
+        ],
+        internalType: "struct CreateCampaignParams",
+        name: "params",
+        type: "tuple",
+      },
+    ],
+    name: "createCampaign",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getMyCampaigns",
+    outputs: [{ internalType: "address[]", name: "", type: "address[]" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "nonce",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "safeImplementation",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+];
 
 export const HyperclusterSepolia = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_validationSourceCode",
-        "type": "string"
+        internalType: "string",
+        name: "_validationSourceCode",
+        type: "string",
       },
       {
-        "internalType": "contract LinkTokenInterface",
-        "name": "_linkToken",
-        "type": "address"
+        internalType: "contract LinkTokenInterface",
+        name: "_linkToken",
+        type: "address",
       },
       {
-        "internalType": "contract IRouterClient",
-        "name": "_ccipRouter",
-        "type": "address"
+        internalType: "contract IRouterClient",
+        name: "_ccipRouter",
+        type: "address",
       },
       {
-        "internalType": "address",
-        "name": "_functionsRouter",
-        "type": "address"
+        internalType: "address",
+        name: "_functionsRouter",
+        type: "address",
       },
       {
-        "internalType": "bytes32",
-        "name": "_donId",
-        "type": "bytes32"
+        internalType: "bytes32",
+        name: "_donId",
+        type: "bytes32",
       },
       {
-        "internalType": "uint64",
-        "name": "_sourceChainSelector",
-        "type": "uint64"
+        internalType: "uint64",
+        name: "_sourceChainSelector",
+        type: "uint64",
       },
       {
-        "internalType": "uint64",
-        "name": "_subscriptionId",
-        "type": "uint64"
-      }
+        internalType: "uint64",
+        name: "_subscriptionId",
+        type: "uint64",
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    stateMutability: "nonpayable",
+    type: "constructor",
   },
   {
-    "inputs": [],
-    "name": "EmptyArgs",
-    "type": "error"
+    inputs: [],
+    name: "EmptyArgs",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "EmptySource",
-    "type": "error"
+    inputs: [],
+    name: "EmptySource",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "NoInlineSecrets",
-    "type": "error"
+    inputs: [],
+    name: "NoInlineSecrets",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "OnlyRouterCanFulfill",
-    "type": "error"
+    inputs: [],
+    name: "OnlyRouterCanFulfill",
+    type: "error",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
       },
       {
-        "internalType": "uint256",
-        "name": "length",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "length",
+        type: "uint256",
+      },
     ],
-    "name": "StringsInsufficientHexLength",
-    "type": "error"
+    name: "StringsInsufficientHexLength",
+    type: "error",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "botAddress",
-        "type": "address"
-      }
+        indexed: false,
+        internalType: "address",
+        name: "botAddress",
+        type: "address",
+      },
     ],
-    "name": "BotCheckFailed",
-    "type": "event"
+    name: "BotCheckFailed",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "milestone",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: "uint256",
+        name: "milestone",
+        type: "uint256",
+      },
     ],
-    "name": "MilestoneReached",
-    "type": "event"
+    name: "MilestoneReached",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
     ],
-    "name": "OwnershipTransferRequested",
-    "type": "event"
+    name: "OwnershipTransferRequested",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
     ],
-    "name": "OwnershipTransferred",
-    "type": "event"
+    name: "OwnershipTransferred",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
+        indexed: false,
+        internalType: "address",
+        name: "sender",
+        type: "address",
       },
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "referral",
-        "type": "address"
-      }
+        indexed: false,
+        internalType: "address",
+        name: "referral",
+        type: "address",
+      },
     ],
-    "name": "ReferralAdded",
-    "type": "event"
+    name: "ReferralAdded",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "id",
-        "type": "bytes32"
-      }
+        indexed: true,
+        internalType: "bytes32",
+        name: "id",
+        type: "bytes32",
+      },
     ],
-    "name": "RequestFulfilled",
-    "type": "event"
+    name: "RequestFulfilled",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "id",
-        "type": "bytes32"
-      }
+        indexed: true,
+        internalType: "bytes32",
+        name: "id",
+        type: "bytes32",
+      },
     ],
-    "name": "RequestSent",
-    "type": "event"
+    name: "RequestSent",
+    type: "event",
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "claimer",
-        "type": "address"
+        indexed: false,
+        internalType: "address",
+        name: "claimer",
+        type: "address",
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
       },
       {
-        "indexed": false,
-        "internalType": "uint64",
-        "name": "destinationSelector",
-        "type": "uint64"
-      }
+        indexed: false,
+        internalType: "uint64",
+        name: "destinationSelector",
+        type: "uint64",
+      },
     ],
-    "name": "RewardsClaimed",
-    "type": "event"
+    name: "RewardsClaimed",
+    type: "event",
   },
   {
-    "inputs": [],
-    "name": "acceptOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    inputs: [],
+    name: "acceptOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string[]",
-        "name": "args",
-        "type": "string[]"
+        internalType: "string[]",
+        name: "args",
+        type: "string[]",
       },
       {
-        "internalType": "uint8",
-        "name": "slotId",
-        "type": "uint8"
+        internalType: "uint8",
+        name: "slotId",
+        type: "uint8",
       },
       {
-        "internalType": "uint64",
-        "name": "version",
-        "type": "uint64"
-      }
+        internalType: "uint64",
+        name: "version",
+        type: "uint64",
+      },
     ],
-    "name": "addReferral",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "addReferral",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "ccipRouter",
-    "outputs": [
+    inputs: [],
+    name: "ccipRouter",
+    outputs: [
       {
-        "internalType": "contract IRouterClient",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "contract IRouterClient",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
+        internalType: "bytes",
+        name: "",
+        type: "bytes",
+      },
     ],
-    "name": "checkUpkeep",
-    "outputs": [
+    name: "checkUpkeep",
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "upkeepNeeded",
-        "type": "bool"
+        internalType: "bool",
+        name: "upkeepNeeded",
+        type: "bool",
       },
       {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
+        internalType: "bytes",
+        name: "",
+        type: "bytes",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "destinationAddress",
-        "type": "address"
+        internalType: "address",
+        name: "destinationAddress",
+        type: "address",
       },
       {
-        "internalType": "uint64",
-        "name": "destinationSelector",
-        "type": "uint64"
-      }
+        internalType: "uint64",
+        name: "destinationSelector",
+        type: "uint64",
+      },
     ],
-    "name": "claimRewards",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "claimRewards",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "name": "claimedMilestones",
-    "outputs": [
+    name: "claimedMilestones",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "creator",
-    "outputs": [
+    inputs: [],
+    name: "creator",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "dataFeed",
-    "outputs": [
+    inputs: [],
+    name: "dataFeed",
+    outputs: [
       {
-        "internalType": "contract AggregatorV3Interface",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "contract AggregatorV3Interface",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "donId",
-    "outputs": [
+    inputs: [],
+    name: "donId",
+    outputs: [
       {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "endTimestamp",
-    "outputs": [
+    inputs: [],
+    name: "endTimestamp",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "functionsCallbackGasLimit",
-    "outputs": [
+    inputs: [],
+    name: "functionsCallbackGasLimit",
+    outputs: [
       {
-        "internalType": "uint32",
-        "name": "",
-        "type": "uint32"
-      }
+        internalType: "uint32",
+        name: "",
+        type: "uint32",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "functionsRouter",
-    "outputs": [
+    inputs: [],
+    name: "functionsRouter",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
     ],
-    "name": "getReferred",
-    "outputs": [
+    name: "getReferred",
+    outputs: [
       {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
-      }
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "getRewards",
-    "outputs": [
+    inputs: [],
+    name: "getRewards",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
+        internalType: "bytes32",
+        name: "requestId",
+        type: "bytes32",
       },
       {
-        "internalType": "bytes",
-        "name": "response",
-        "type": "bytes"
+        internalType: "bytes",
+        name: "response",
+        type: "bytes",
       },
       {
-        "internalType": "bytes",
-        "name": "err",
-        "type": "bytes"
-      }
+        internalType: "bytes",
+        name: "err",
+        type: "bytes",
+      },
     ],
-    "name": "handleOracleFulfillment",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "handleOracleFulfillment",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "increaseRate",
-    "outputs": [
+    inputs: [],
+    name: "increaseRate",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
+            internalType: "string",
+            name: "name",
+            type: "string",
           },
           {
-            "internalType": "string",
-            "name": "metadata",
-            "type": "string"
+            internalType: "string",
+            name: "metadata",
+            type: "string",
           },
           {
-            "internalType": "address",
-            "name": "rewardTokenAddress",
-            "type": "address"
+            internalType: "address",
+            name: "rewardTokenAddress",
+            type: "address",
           },
           {
-            "internalType": "address",
-            "name": "rootReferral",
-            "type": "address"
+            internalType: "address",
+            name: "rootReferral",
+            type: "address",
           },
           {
-            "internalType": "uint256",
-            "name": "rewardPercentPerMilestone",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "rewardPercentPerMilestone",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "totalSupply",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "totalSupply",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "increaseRate",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "increaseRate",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "startIn",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "startIn",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "endIn",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "endIn",
+            type: "uint256",
           },
           {
-            "internalType": "address",
-            "name": "dataFeedAddress",
-            "type": "address"
-          }
+            internalType: "address",
+            name: "dataFeedAddress",
+            type: "address",
+          },
         ],
-        "internalType": "struct CreateCampaignParams",
-        "name": "params",
-        "type": "tuple"
+        internalType: "struct CreateCampaignParams",
+        name: "params",
+        type: "tuple",
       },
       {
-        "internalType": "address",
-        "name": "_creator",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "_creator",
+        type: "address",
+      },
     ],
-    "name": "initialize",
-    "outputs": [
+    name: "initialize",
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
     ],
-    "name": "isInCampaign",
-    "outputs": [
+    name: "isInCampaign",
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "linkToken",
-    "outputs": [
+    inputs: [],
+    name: "linkToken",
+    outputs: [
       {
-        "internalType": "contract LinkTokenInterface",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "contract LinkTokenInterface",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "metadata",
-    "outputs": [
+    inputs: [],
+    name: "metadata",
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "name": "milestoneRewards",
-    "outputs": [
+    name: "milestoneRewards",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "milestoneTotalSupply",
-    "outputs": [
+    inputs: [],
+    name: "milestoneTotalSupply",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "milestonesReached",
-    "outputs": [
+    inputs: [],
+    name: "milestonesReached",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "name",
-    "outputs": [
+    inputs: [],
+    name: "name",
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
+    inputs: [],
+    name: "owner",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
+        internalType: "bytes",
+        name: "",
+        type: "bytes",
+      },
     ],
-    "name": "performUpkeep",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "performUpkeep",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "reachMilestone",
-    "outputs": [
+    inputs: [],
+    name: "reachMilestone",
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
-    "name": "referralCodeToReferredCount",
-    "outputs": [
+    name: "referralCodeToReferredCount",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "name": "referralTier",
-    "outputs": [
+    name: "referralTier",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        internalType: "address",
+        name: "",
+        type: "address",
       },
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "name": "referrals",
-    "outputs": [
+    name: "referrals",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
     ],
-    "name": "requestIdsToReferrals",
-    "outputs": [
+    name: "requestIdsToReferrals",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "receiver",
-        "type": "address"
+        internalType: "address",
+        name: "receiver",
+        type: "address",
       },
       {
-        "internalType": "string",
-        "name": "referralCode",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "referralCode",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "rewardPercentPerMilestone",
-    "outputs": [
+    inputs: [],
+    name: "rewardPercentPerMilestone",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "rewardToken",
-    "outputs": [
+    inputs: [],
+    name: "rewardToken",
+    outputs: [
       {
-        "internalType": "contract IERC20",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "rootReferral",
-    "outputs": [
+    inputs: [],
+    name: "rootReferral",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "sourceCode",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "sourceCode",
+        type: "string",
+      },
     ],
-    "name": "setSourceCode",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "setSourceCode",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "sourceChainSelector",
-    "outputs": [
+    inputs: [],
+    name: "sourceChainSelector",
+    outputs: [
       {
-        "internalType": "uint64",
-        "name": "",
-        "type": "uint64"
-      }
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "startTimestamp",
-    "outputs": [
+    inputs: [],
+    name: "startTimestamp",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "subscriptionId",
-    "outputs": [
+    inputs: [],
+    name: "subscriptionId",
+    outputs: [
       {
-        "internalType": "uint64",
-        "name": "",
-        "type": "uint64"
-      }
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "thresholdPrice",
-    "outputs": [
+    inputs: [],
+    name: "thresholdPrice",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
     ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "validationSourceCode",
-    "outputs": [
+    inputs: [],
+    name: "validationSourceCode",
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
-  }
-]
-
+    stateMutability: "view",
+    type: "function",
+  },
+];
 
 export const HyperclusterABI = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_validationSourceCode",
-        "type": "string"
-      },
-      {
-        "internalType": "contract LinkTokenInterface",
-        "name": "_linkToken",
-        "type": "address"
-      },
-      {
-        "internalType": "contract IRouterClient",
-        "name": "_ccipRouter",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_functionsRouter",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "_donId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "uint64",
-        "name": "_sourceChainSelector",
-        "type": "uint64"
-      },
-      {
-        "internalType": "uint64",
-        "name": "_subscriptionId",
-        "type": "uint64"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "inputs": [],
-    "name": "EmptyArgs",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "EmptySource",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NoInlineSecrets",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "OnlyRouterCanFulfill",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "length",
-        "type": "uint256"
-      }
-    ],
-    "name": "StringsInsufficientHexLength",
-    "type": "error"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "botAddress",
-        "type": "address"
-      }
-    ],
-    "name": "BotCheckFailed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "milestone",
-        "type": "uint256"
-      }
-    ],
-    "name": "MilestoneReached",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferRequested",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "referral",
-        "type": "address"
-      }
-    ],
-    "name": "ReferralAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "id",
-        "type": "bytes32"
-      }
-    ],
-    "name": "RequestFulfilled",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "id",
-        "type": "bytes32"
-      }
-    ],
-    "name": "RequestSent",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "claimer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint64",
-        "name": "destinationSelector",
-        "type": "uint64"
-      }
-    ],
-    "name": "RewardsClaimed",
-    "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "acceptOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string[]",
-        "name": "args",
-        "type": "string[]"
-      },
-      {
-        "internalType": "uint8",
-        "name": "slotId",
-        "type": "uint8"
-      },
-      {
-        "internalType": "uint64",
-        "name": "version",
-        "type": "uint64"
-      }
-    ],
-    "name": "addReferral",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "ccipRouter",
-    "outputs": [
-      {
-        "internalType": "contract IRouterClient",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "checkUpkeep",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "upkeepNeeded",
-        "type": "bool"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "destinationAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint64",
-        "name": "destinationSelector",
-        "type": "uint64"
-      }
-    ],
-    "name": "claimRewards",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "claimedMilestones",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "creator",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "dataFeed",
-    "outputs": [
-      {
-        "internalType": "contract AggregatorV3Interface",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "donId",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "endTimestamp",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "functionsCallbackGasLimit",
-    "outputs": [
-      {
-        "internalType": "uint32",
-        "name": "",
-        "type": "uint32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "functionsRouter",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      }
-    ],
-    "name": "getReferred",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getRewards",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes",
-        "name": "response",
-        "type": "bytes"
-      },
-      {
-        "internalType": "bytes",
-        "name": "err",
-        "type": "bytes"
-      }
-    ],
-    "name": "handleOracleFulfillment",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "increaseRate",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "components": [
+        components: [
           {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
+            internalType: "string",
+            name: "name",
+            type: "string",
           },
           {
-            "internalType": "string",
-            "name": "metadata",
-            "type": "string"
+            internalType: "string",
+            name: "metadata",
+            type: "string",
           },
           {
-            "internalType": "address",
-            "name": "rewardTokenAddress",
-            "type": "address"
+            internalType: "address",
+            name: "rewardTokenAddress",
+            type: "address",
           },
           {
-            "internalType": "address",
-            "name": "rootReferral",
-            "type": "address"
+            internalType: "address",
+            name: "rootReferral",
+            type: "address",
           },
           {
-            "internalType": "uint256",
-            "name": "rewardPercentPerMilestone",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "rewardPercentPerMilestone",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "totalSupply",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "totalSupply",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "increaseRate",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "increaseRate",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "startIn",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "startIn",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "endIn",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "endIn",
+            type: "uint256",
           },
           {
-            "internalType": "address",
-            "name": "dataFeedAddress",
-            "type": "address"
-          }
+            internalType: "address",
+            name: "dataFeedAddress",
+            type: "address",
+          },
         ],
-        "internalType": "struct CreateCampaignParams",
-        "name": "params",
-        "type": "tuple"
+        internalType: "struct CreateCampaignParams",
+        name: "params",
+        type: "tuple",
       },
       {
-        "internalType": "address",
-        "name": "_creator",
-        "type": "address"
-      }
-    ],
-    "name": "initialize",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "isInCampaign",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "linkToken",
-    "outputs": [
-      {
-        "internalType": "contract LinkTokenInterface",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "metadata",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "milestoneRewards",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "milestoneTotalSupply",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "milestonesReached",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "name",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "performUpkeep",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "reachMilestone",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "name": "referralCodeToReferredCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "referralTier",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        internalType: "address",
+        name: "_creator",
+        type: "address",
       },
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "referrals",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "name": "requestIdsToReferrals",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "receiver",
-        "type": "address"
+        internalType: "string",
+        name: "_validationSourceCode",
+        type: "string",
       },
       {
-        "internalType": "string",
-        "name": "referralCode",
-        "type": "string"
-      }
+        internalType: "contract LinkTokenInterface",
+        name: "_linkToken",
+        type: "address",
+      },
+      {
+        internalType: "contract IRouterClient",
+        name: "_ccipRouter",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_functionsRouter",
+        type: "address",
+      },
+      {
+        internalType: "bytes32",
+        name: "_donId",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint64",
+        name: "_sourceChainSelector",
+        type: "uint64",
+      },
+      {
+        internalType: "uint64",
+        name: "_subscriptionId",
+        type: "uint64",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "nonpayable",
+    type: "constructor",
   },
   {
-    "inputs": [],
-    "name": "rewardPercentPerMilestone",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+    inputs: [],
+    name: "EmptyArgs",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "rewardToken",
-    "outputs": [
-      {
-        "internalType": "contract IERC20",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+    inputs: [],
+    name: "EmptySecrets",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "rootReferral",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+    inputs: [],
+    name: "EmptySource",
+    type: "error",
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "sourceCode",
-        "type": "string"
-      }
-    ],
-    "name": "setSourceCode",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    inputs: [],
+    name: "NoInlineSecrets",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "sourceChainSelector",
-    "outputs": [
-      {
-        "internalType": "uint64",
-        "name": "",
-        "type": "uint64"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+    inputs: [],
+    name: "OnlyRouterCanFulfill",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "startTimestamp",
-    "outputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "length",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    name: "StringsInsufficientHexLength",
+    type: "error",
   },
   {
-    "inputs": [],
-    "name": "subscriptionId",
-    "outputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "uint64",
-        "name": "",
-        "type": "uint64"
-      }
+        indexed: false,
+        internalType: "address",
+        name: "botAddress",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    name: "BotCheckFailed",
+    type: "event",
   },
   {
-    "inputs": [],
-    "name": "thresholdPrice",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+    anonymous: false,
+    inputs: [],
+    name: "CannotReferYourself",
+    type: "event",
   },
   {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: "string",
+        name: "err",
+        type: "string",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    name: "FunctionsError",
+    type: "event",
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
+        indexed: false,
+        internalType: "bytes32",
+        name: "requestId",
+        type: "bytes32",
+      },
+      {
+        indexed: false,
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
+      },
+      {
+        indexed: false,
+        internalType: "bytes",
+        name: "error",
+        type: "bytes",
+      },
     ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: "FunctionsRequestFulfilled",
+    type: "event",
   },
   {
-    "inputs": [],
-    "name": "validationSourceCode",
-    "outputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        indexed: false,
+        internalType: "uint256",
+        name: "milestone",
+        type: "uint256",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
-  }
-]
+    name: "MilestoneReached",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferRequested",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "referral",
+        type: "address",
+      },
+    ],
+    name: "ReferralAdded",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "id",
+        type: "bytes32",
+      },
+    ],
+    name: "RequestFulfilled",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "id",
+        type: "bytes32",
+      },
+    ],
+    name: "RequestSent",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "claimer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint64",
+        name: "destinationSelector",
+        type: "uint64",
+      },
+    ],
+    name: "RewardsClaimed",
+    type: "event",
+  },
+  {
+    inputs: [],
+    name: "acceptOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string[]",
+        name: "args",
+        type: "string[]",
+      },
+      {
+        internalType: "uint8",
+        name: "slotId",
+        type: "uint8",
+      },
+      {
+        internalType: "uint64",
+        name: "version",
+        type: "uint64",
+      },
+      {
+        internalType: "bytes",
+        name: "encryptedSecretsUrls",
+        type: "bytes",
+      },
+      {
+        internalType: "bytes[]",
+        name: "bytesArgs",
+        type: "bytes[]",
+      },
+    ],
+    name: "addReferral",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "ccipRouter",
+    outputs: [
+      {
+        internalType: "contract IRouterClient",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "index",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "timestamp",
+            type: "uint256",
+          },
+          {
+            internalType: "bytes32",
+            name: "txHash",
+            type: "bytes32",
+          },
+          {
+            internalType: "uint256",
+            name: "blockNumber",
+            type: "uint256",
+          },
+          {
+            internalType: "bytes32",
+            name: "blockHash",
+            type: "bytes32",
+          },
+          {
+            internalType: "address",
+            name: "source",
+            type: "address",
+          },
+          {
+            internalType: "bytes32[]",
+            name: "topics",
+            type: "bytes32[]",
+          },
+          {
+            internalType: "bytes",
+            name: "data",
+            type: "bytes",
+          },
+        ],
+        internalType: "struct ILogAutomation.Log",
+        name: "log",
+        type: "tuple",
+      },
+      {
+        internalType: "bytes",
+        name: "",
+        type: "bytes",
+      },
+    ],
+    name: "checkLog",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "upkeepNeeded",
+        type: "bool",
+      },
+      {
+        internalType: "bytes",
+        name: "performData",
+        type: "bytes",
+      },
+    ],
+    stateMutability: "pure",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes",
+        name: "",
+        type: "bytes",
+      },
+    ],
+    name: "checkUpkeep",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "upkeepNeeded",
+        type: "bool",
+      },
+      {
+        internalType: "bytes",
+        name: "performData",
+        type: "bytes",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "destinationAddress",
+        type: "address",
+      },
+      {
+        internalType: "uint64",
+        name: "destinationSelector",
+        type: "uint64",
+      },
+    ],
+    name: "claimRewards",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "claimedMilestones",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "creator",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "dataFeed",
+    outputs: [
+      {
+        internalType: "contract AggregatorV3Interface",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "donId",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "endTimestamp",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "functionsCallbackGasLimit",
+    outputs: [
+      {
+        internalType: "uint32",
+        name: "",
+        type: "uint32",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "functionsRouter",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+    ],
+    name: "getReferred",
+    outputs: [
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getRewards",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "requestId",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes",
+        name: "response",
+        type: "bytes",
+      },
+      {
+        internalType: "bytes",
+        name: "err",
+        type: "bytes",
+      },
+    ],
+    name: "handleOracleFulfillment",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "increaseRate",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+    ],
+    name: "isInCampaign",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "linkToken",
+    outputs: [
+      {
+        internalType: "contract LinkTokenInterface",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "metadata",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "milestoneRewards",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "milestoneTotalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "milestonesReached",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes",
+        name: "performData",
+        type: "bytes",
+      },
+    ],
+    name: "performUpkeep",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "reachMilestone",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    name: "referralCodeToReferredCount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "referralTier",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "referrals",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
+    ],
+    name: "requestIdsToReferrals",
+    outputs: [
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "referralCode",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "rewardPercentPerMilestone",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "rewardToken",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "rootReferral",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "sourceCode",
+        type: "string",
+      },
+    ],
+    name: "setSourceCode",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "sourceChainSelector",
+    outputs: [
+      {
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startTimestamp",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "subscriptionId",
+    outputs: [
+      {
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "thresholdPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "validationSourceCode",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
 
 export const HyperclusterFactoryABI = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "_campaignImplementation",
-        "type": "address"
+        internalType: "string",
+        name: "_validationSourceCode",
+        type: "string",
       },
       {
-        "internalType": "contract LinkTokenInterface",
-        "name": "_linkToken",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "inputs": [],
-    "name": "Create2EmptyBytecode",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "Create2FailedDeployment",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "balance",
-        "type": "uint256"
+        internalType: "contract IRouterClient",
+        name: "_ccipRouter",
+        type: "address",
       },
       {
-        "internalType": "uint256",
-        "name": "needed",
-        "type": "uint256"
-      }
-    ],
-    "name": "Create2InsufficientBalance",
-    "type": "error"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "campaign",
-        "type": "address"
+        internalType: "address",
+        name: "_functionsRouter",
+        type: "address",
       },
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "rewardTokenAddress",
-        "type": "address"
+        internalType: "bytes32",
+        name: "_donId",
+        type: "bytes32",
       },
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "rootReferral",
-        "type": "address"
+        internalType: "uint64",
+        name: "_sourceChainSelector",
+        type: "uint64",
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "rewardPercentPerMilestone",
-        "type": "uint256"
+        internalType: "uint64",
+        name: "_subscriptionId",
+        type: "uint64",
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenAmount",
-        "type": "uint256"
+        internalType: "contract LinkTokenInterface",
+        name: "_linkToken",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "campaign",
+        type: "address",
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "startTimestamp",
-        "type": "uint256"
+        indexed: false,
+        internalType: "address",
+        name: "rewardTokenAddress",
+        type: "address",
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "endTimestamp",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: "address",
+        name: "rootReferral",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "rewardPercentPerMilestone",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "tokenAmount",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "startTimestamp",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "endTimestamp",
+        type: "uint256",
+      },
     ],
-    "name": "CampaignCreated",
-    "type": "event"
+    name: "CampaignCreated",
+    type: "event",
   },
   {
-    "inputs": [],
-    "name": "admin",
-    "outputs": [
+    inputs: [],
+    name: "admin",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "campaign",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "campaign",
+        type: "address",
+      },
     ],
-    "name": "campaignExists",
-    "outputs": [
+    name: "campaignExists",
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "campaignImplementation",
-    "outputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    name: "campaigns",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [],
+    name: "ccipRouter",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "contract IRouterClient",
+        name: "",
+        type: "address",
+      },
     ],
-    "name": "campaigns",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "components": [
+        components: [
           {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
+            internalType: "string",
+            name: "name",
+            type: "string",
           },
           {
-            "internalType": "string",
-            "name": "metadata",
-            "type": "string"
+            internalType: "string",
+            name: "metadata",
+            type: "string",
           },
           {
-            "internalType": "address",
-            "name": "rewardTokenAddress",
-            "type": "address"
+            internalType: "address",
+            name: "rewardTokenAddress",
+            type: "address",
           },
           {
-            "internalType": "address",
-            "name": "rootReferral",
-            "type": "address"
+            internalType: "address",
+            name: "rootReferral",
+            type: "address",
           },
           {
-            "internalType": "uint256",
-            "name": "rewardPercentPerMilestone",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "rewardPercentPerMilestone",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "totalSupply",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "totalSupply",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "increaseRate",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "increaseRate",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "startIn",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "startIn",
+            type: "uint256",
           },
           {
-            "internalType": "uint256",
-            "name": "endIn",
-            "type": "uint256"
+            internalType: "uint256",
+            name: "endIn",
+            type: "uint256",
           },
           {
-            "internalType": "address",
-            "name": "dataFeedAddress",
-            "type": "address"
-          }
+            internalType: "address",
+            name: "dataFeedAddress",
+            type: "address",
+          },
         ],
-        "internalType": "struct CreateCampaignParams",
-        "name": "params",
-        "type": "tuple"
-      }
+        internalType: "struct CreateCampaignParams",
+        name: "params",
+        type: "tuple",
+      },
     ],
-    "name": "createCampaign",
-    "outputs": [
+    name: "createCampaign",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "getMyCampaigns",
-    "outputs": [
+    inputs: [],
+    name: "donId",
+    outputs: [
       {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
-      }
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "linkToken",
-    "outputs": [
+    inputs: [],
+    name: "functionsCallbackGasLimit",
+    outputs: [
       {
-        "internalType": "contract LinkTokenInterface",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "uint32",
+        name: "",
+        type: "uint32",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "nonce",
-    "outputs": [
+    inputs: [],
+    name: "functionsRouter",
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: "view",
+    type: "function",
   },
   {
-    "inputs": [],
-    "name": "safeImplementation",
-    "outputs": [
+    inputs: [],
+    name: "getMyCampaigns",
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
-  }
-]
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "linkToken",
+    outputs: [
+      {
+        internalType: "contract LinkTokenInterface",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "nonce",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "sourceChainSelector",
+    outputs: [
+      {
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "subscriptionId",
+    outputs: [
+      {
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "validationSourceCode",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];

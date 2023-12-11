@@ -7,13 +7,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-
-
-  if (!req.headers['api_key'] || req.headers['api_key'] !== "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL")
-  {
-    res.status(401).json({error: "unauthorized", code: 401});
+  if (
+    !req.headers["api_key"] ||
+    req.headers["api_key"] !== "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL"
+  ) {
+    res.status(401).json({ error: "unauthorized", code: 401 });
   }
-  
+
   const network = {
     avalanche: {
       router: "0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0",
@@ -58,11 +58,8 @@ export default async function handler(
   await secretsManager.initialize();
 
   const secrets = {
-    //midjourneyApiKey: process.env.MIDJOURNEY_API_KEY  "",
-    //nftStorageApiKey: process.env.NFT_STORAGE_API_KEY || "",
     zxScopeApiKey: process.env.ZK_SCOPE_KEY || "",
-    hyperclusterKey: process.env.HYPERCLUSTER_KEY || ""
-
+    hyperclusterKey: process.env.HYPERCLUSTER_KEY || "",
   };
   console.log(secrets);
 
@@ -93,4 +90,3 @@ export default async function handler(
     version,
   });
 }
-
