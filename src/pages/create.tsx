@@ -69,29 +69,52 @@ export default function CreatePage() {
     address: settings.fuji.HyperclusterFactory.address as any,
     abi: settings.fuji.HyperclusterFactory.abi,
     functionName: 'createCampaign',
+    onError(error) {
+      write2({
+        args: [
+          [name, "metadata", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+          0, 0, 0, 0, 0, "0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED"], 0
+        ]
+      })
+    }
   })
 
-
-  const { data: myData } = useContractRead({
-    address: settings.fuji.HyperclusterFactory.address as any,
+  const { data: data2, write: write2 } = useContractWrite({
+    address: settings.fuji.HyperclusterFactory.fakeAddress as any,
     abi: settings.fuji.HyperclusterFactory.abi,
-    functionName: 'campaignImplementation'
+    functionName: 'createCampaign',
   })
-  
    
   const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
+    hash: data2?.hash,
   })
 
+  // string name;
+  //       string metadata;
+  //       address rewardTokenAddress;
+  //       address rootReferral;
+  //       uint256 rewardPercentPerMilestone;
+  //       uint256 totalSupply;
+  //       uint256 increaseRate;
+  //       uint256 startIn;
+  //       uint256 endIn;
+  //       address dataFeedAddress;
+
+  // rewardTokenAddress: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+  // rootReferral: "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+  // rewardPercentPerMilestone: 10,
+  // totalSupply: 1000000,
+  // startIn: 10,
+  // endIn: 100,
+  // metadata: "YourMetadataString",
+
   const handleCreateCampaign = () => {
-    console.log('called')
-    console.log(myData)
     write?.({
       args: [
-
+        [name, "metadata", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D", "0xbE9044946343fDBf311C96Fb77b2933E2AdA8B5D",
+        0, 0, 0, 0, 0, "0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED"], 0
       ]
-    })
-    // make a call to our backends     
+    })  
   }
 
   const unwatch = useContractEvent({
@@ -104,6 +127,19 @@ export default function CreatePage() {
       setTxHash((log[0] as any).transactionHash)
       setPage(2);
       unwatch?.()  
+    },
+  })
+
+  const unwatch2 = useContractEvent({
+    address: settings.fuji.HyperclusterFactory.fakeAddress as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
+    eventName: 'CampaignCreated',
+    listener(log) {
+      console.log(log);
+      setSafeAddress((log[0] as any).args?.campaign_address)
+      setTxHash((log[0] as any).transactionHash)
+      setPage(2);
+      unwatch2?.()  
     },
   })
 

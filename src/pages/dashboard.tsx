@@ -24,8 +24,7 @@ export default function DashboardPage() {
   const { data, isError, isLoading } = useContractRead({
     address: settings.fuji.HyperclusterFactory.address as any,
     abi: settings.fuji.HyperclusterFactory.abi,
-    functionName: 'GetMyCampaigns',
-    args: [address]
+    functionName: 'getMyCampaigns',
   })
   
   return (
@@ -39,10 +38,10 @@ export default function DashboardPage() {
                 <div className="text-2xl text-[#FF5906]">
                   <p>My Campaigns</p>
                   {realCampaigns.map(h => {
-                    return <LongCard title={h.title} launchDate={h.launchDate} onClick={() => setSelectedCard(h)} />
+                    return <LongCard key={h.title} title={h.title} launchDate={h.launchDate} onClick={() => setSelectedCard(h)} />
                   })}
                   {settings.mockCampaigns.map(x => {
-                    return <LongCard title={x.title} launchDate={x.launchDate} onClick={() => setSelectedCard(x)}/>
+                    return <LongCard key={x.title} title={x.title} launchDate={x.launchDate} onClick={() => setSelectedCard(x)}/>
                   })}
                 </div>
               </div>

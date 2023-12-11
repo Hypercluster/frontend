@@ -1,8 +1,50 @@
 export const HyperclusterABI =[
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_validationSourceCode",
+        "type": "string"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "EmptyArgs",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EmptySource",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NoInlineSecrets",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyRouterCanFulfill",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "length",
+        "type": "uint256"
+      }
+    ],
+    "name": "StringsInsufficientHexLength",
+    "type": "error"
   },
   {
     "anonymous": false,
@@ -34,6 +76,44 @@ export const HyperclusterABI =[
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "address",
         "name": "sender",
@@ -47,6 +127,32 @@ export const HyperclusterABI =[
       }
     ],
     "name": "ReferralAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RequestFulfilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "id",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RequestSent",
     "type": "event"
   },
   {
@@ -75,11 +181,28 @@ export const HyperclusterABI =[
     "type": "event"
   },
   {
+    "inputs": [],
+    "name": "acceptOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
+        "internalType": "string",
+        "name": "referralCode",
+        "type": "string"
+      },
+      {
+        "internalType": "uint8",
+        "name": "slotId",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint64",
+        "name": "version",
+        "type": "uint64"
       }
     ],
     "name": "addReferral",
@@ -88,7 +211,49 @@ export const HyperclusterABI =[
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "ccipRouter",
+    "outputs": [
+      {
+        "internalType": "contract IRouterClient",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "checkUpkeep",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "upkeepNeeded",
+        "type": "bool"
+      },
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "destinationAddress",
+        "type": "address"
+      },
       {
         "internalType": "uint64",
         "name": "destinationSelector",
@@ -121,6 +286,58 @@ export const HyperclusterABI =[
   },
   {
     "inputs": [],
+    "name": "creator",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "customLogicUpkeepId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "dataFeed",
+    "outputs": [
+      {
+        "internalType": "contract AggregatorV3Interface",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "donId",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "endTimestamp",
     "outputs": [
       {
@@ -133,16 +350,29 @@ export const HyperclusterABI =[
     "type": "function"
   },
   {
-    "inputs": [
+    "inputs": [],
+    "name": "functionsCallbackGasLimit",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "functionsRouter",
+    "outputs": [
       {
         "internalType": "address",
-        "name": "botAddress",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "failBotCheck",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -180,7 +410,53 @@ export const HyperclusterABI =[
   {
     "inputs": [
       {
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes",
+        "name": "response",
+        "type": "bytes"
+      },
+      {
+        "internalType": "bytes",
+        "name": "err",
+        "type": "bytes"
+      }
+    ],
+    "name": "handleOracleFulfillment",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "increaseRate",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "metadata",
+            "type": "string"
+          },
           {
             "internalType": "address",
             "name": "rewardTokenAddress",
@@ -203,6 +479,11 @@ export const HyperclusterABI =[
           },
           {
             "internalType": "uint256",
+            "name": "increaseRate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
             "name": "startIn",
             "type": "uint256"
           },
@@ -210,11 +491,26 @@ export const HyperclusterABI =[
             "internalType": "uint256",
             "name": "endIn",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "dataFeedAddress",
+            "type": "address"
           }
         ],
-        "internalType": "struct ICampaign.CreateCampaignParams",
+        "internalType": "struct CreateCampaignParams",
         "name": "params",
         "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_upKeepId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_creator",
+        "type": "address"
       }
     ],
     "name": "initialize",
@@ -242,6 +538,32 @@ export const HyperclusterABI =[
         "internalType": "bool",
         "name": "",
         "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "linkToken",
+    "outputs": [
+      {
+        "internalType": "contract LinkTokenInterface",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "metadata",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -294,6 +616,45 @@ export const HyperclusterABI =[
   },
   {
     "inputs": [],
+    "name": "name",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "performUpkeep",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "reachMilestone",
     "outputs": [
       {
@@ -303,6 +664,25 @@ export const HyperclusterABI =[
       }
     ],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "referralCodeToReferredCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -349,6 +729,30 @@ export const HyperclusterABI =[
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "requestIdsToReferrals",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "referralCode",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "rewardPercentPerMilestone",
     "outputs": [
@@ -363,10 +767,10 @@ export const HyperclusterABI =[
   },
   {
     "inputs": [],
-    "name": "rewardTokenAddress",
+    "name": "rewardToken",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "contract IERC20",
         "name": "",
         "type": "address"
       }
@@ -389,12 +793,12 @@ export const HyperclusterABI =[
   },
   {
     "inputs": [],
-    "name": "safeAddress",
+    "name": "sourceChainSelector",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "uint64",
         "name": "",
-        "type": "address"
+        "type": "uint64"
       }
     ],
     "stateMutability": "view",
@@ -415,12 +819,64 @@ export const HyperclusterABI =[
   },
   {
     "inputs": [],
+    "name": "subscriptionId",
+    "outputs": [
+      {
+        "internalType": "uint64",
+        "name": "",
+        "type": "uint64"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "thresholdPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "totalSupply",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "validationSourceCode",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -517,6 +973,45 @@ export const HyperclusterFactoryABI = [
   },
   {
     "inputs": [],
+    "name": "CCIP_BNM_TOKEN_ADDRESS",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "LINK_TOKEN",
+    "outputs": [
+      {
+        "internalType": "contract LinkTokenInterface",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "UPKEEP_REGISTRAR",
+    "outputs": [
+      {
+        "internalType": "contract AutomationRegistrarInterface",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "admin",
     "outputs": [
       {
@@ -582,34 +1077,66 @@ export const HyperclusterFactoryABI = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "rewardTokenAddress",
-        "type": "address"
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "metadata",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "rewardTokenAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "rootReferral",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "rewardPercentPerMilestone",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalSupply",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "increaseRate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "startIn",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endIn",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "dataFeedAddress",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct CreateCampaignParams",
+        "name": "params",
+        "type": "tuple"
       },
       {
-        "internalType": "address",
-        "name": "rootReferral",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "rewardPercentPerMilestone",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "totalSupply",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "startIn",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "endIn",
-        "type": "uint256"
+        "internalType": "uint96",
+        "name": "upkeepSubscriptionBalance",
+        "type": "uint96"
       }
     ],
     "name": "createCampaign",
@@ -621,6 +1148,19 @@ export const HyperclusterFactoryABI = [
       }
     ],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getMyCampaigns",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {

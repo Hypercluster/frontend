@@ -166,10 +166,9 @@ export default function DepositRewards({
               
               {depositIsSuccess && isOpen && (
                 <>
-                  <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40"></div>
+                  <div onClick={()=> setIsOpen(false)} className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40"></div>
                   <div className="fixed top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 bg-[#FF5906] p-4 z-50 opacity-100 w-[25%] rounded-lg">
                     <DeployedModal close={() => setIsOpen(false)} />
-                    {depositData?.hash}
                   </div>
                 </>
               )}

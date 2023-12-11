@@ -146,7 +146,11 @@ export default function RewardingReferrals({
             disabled={!address}
             className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-14 bottom-[1px]"
           >
-            { isLoading ? "Deploying..." : "Deploy" }
+          
+          { isLoading ? "Deploying..." : "Deploy" }
+          </button>
+          <button onClick={handleNextPage}>
+              {"->"}
           </button>
         </div>
       </div>
