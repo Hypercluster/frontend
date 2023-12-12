@@ -109,8 +109,8 @@ export default function Campaign({
   const { data: code } = useContractRead({
     address: settings.fuji.HyperclusterImplementation.address as any,
     abi: settings.fuji.HyperclusterImplementation.abi,
-    functionName: "validationSourceCode",
-    args: [],
+    functionName: "milestoneRewards",
+    args: [0],
   });
 
   // http://localhost:3000/campaign/anything?ref=401c35625d67701f9b572fe8c8313d71b3618170a7f1b6c76de0b13d3e671979cd2d2dc6e7bce5fc4e4ea5697d8f9d3c5d7f58f2e21e838c5c6cdaa8e74787e73d19f61dc65d28fc831e09d75bae2036c288dd309f5cbadfa10b88384fa75b41
