@@ -19,17 +19,28 @@ export default function ClaimModal({
 
   // TODO: cant get into a campaign page without a referral code
   const { data, write } = useContractWrite({
-    address: settings.fuji.HyperclusterImplementation as any,
+    address: settings.fuji.HyperclusterImplementation.address as any,
     abi: settings.fuji.HyperclusterImplementation.abi,
+    functionName: 'claimRewards',
   })
 
 
+//   Sepolia
+// 16015286601757825753
 
-  
+// Mumbai 
+// 12532609583862916517
+
+// Optimism Goerli
+// 2664363617261496610
+
+// BNB
+// 13264668187771770619
+
   // TODO: also fix this
   const handleClaim = () =>{
     write({
-      args: [address, "destinationSelector"]
+      args: [address, "12532609583862916517" ]
     })
   }
 

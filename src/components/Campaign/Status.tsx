@@ -1,7 +1,7 @@
 import { settings } from "@/config/config";
 import { HyperclusterABI } from "@/helpers/abi";
 import { useState } from "react";
-import { useAccount, useContractReads } from "wagmi";
+import { useAccount, useContractReads, useContractWrite } from "wagmi";
 
 
 export default function Status({
@@ -18,6 +18,7 @@ export default function Status({
   getReferred: string[];
 }) {
 
+ 
 
   return (
     <div className="  h-[60%] p-20 flex flex-col space-y-3">

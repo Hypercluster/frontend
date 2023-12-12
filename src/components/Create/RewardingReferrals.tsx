@@ -49,7 +49,7 @@ export default function RewardingReferrals({
     write({
       args: [
         settings.fuji.HyperclusterFactory.address as any,
-        BigInt(maxTokens + 20),
+        BigInt("1000000000000000000"),
       ],
     });
   };
@@ -102,7 +102,7 @@ export default function RewardingReferrals({
         "0xD21341536c5cF5EB1bcb58f6723cE26e8D8E90e4",
         address,
         "10",
-        maxTokens,
+        "1000000000000000000",
         "10",
         "0",
         "100000000",
