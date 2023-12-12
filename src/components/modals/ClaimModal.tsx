@@ -19,11 +19,11 @@ export default function ClaimModal({
 
   // TODO: cant get into a campaign page without a referral code
   const { data, write } = useContractWrite({
-    address: settings.sepolia as any,
-    abi: settings.sepolia.HyperclusterImplementation.abi,
+    address: settings.fuji.HyperclusterImplementation as any,
+    abi: settings.fuji.HyperclusterImplementation.abi,
   })
 
-  
+
 
   
   // TODO: also fix this

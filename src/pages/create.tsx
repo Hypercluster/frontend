@@ -78,20 +78,8 @@ export default function CreatePage() {
   //       address dataFeedAddress;
 
 
-  const unwatch = useContractEvent({
-    address: settings.sepolia.HyperclusterFactory.address as any,
-    abi: settings.sepolia.HyperclusterFactory.abi,
-    eventName: 'CampaignCreated',
-    listener(log) {
-      console.log(log);
-      setSafeAddress((log[0] as any).args?.campaign_address)
-      setPage(2);
-      unwatch?.()  
-    },
-  })
+  
 
-  const [safeAddress, setSafeAddress] = useState("")
- 
 
   return (
     <div className="flex justify-start  h-screen">
@@ -124,7 +112,7 @@ export default function CreatePage() {
             />
           ) : (
             <DepositRewards
-            safeAddress={safeAddress}
+            safeAddress={""}
             name={name} />
           )}
         </div>

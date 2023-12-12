@@ -3,12 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 
 
-// {
-//   "referrer_address": "0x231231273y213132bfb3fbiunfiwnfewe",
-//   "campaign_id": "donkey",
-//  "referring_address": ""
-// }
-
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (!req.headers['api_key'] || req.headers['api_key'] !== "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL")

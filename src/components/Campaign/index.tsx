@@ -82,6 +82,8 @@ export default function Campaign({
     });
     const { referrer, referring, campaign_id } = await res.json();
 
+    console.log(referrer)
+
     if (campaign !== campaign_id) {
       console.log("Warning: campaign_address mismatch", campaign, campaign_id);
     }

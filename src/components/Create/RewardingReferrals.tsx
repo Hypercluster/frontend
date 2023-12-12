@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Dropdown from "../Dropdown";
 import Image from "next/image";
-import { erc20ABI, useAccount, useContractWrite } from "wagmi";
+import { erc20ABI, useAccount, useContractEvent, useContractWrite } from "wagmi";
 import Input from "../Input";
 import { settings } from "@/config/config";
+import DeployedModal from "../modals/DeployedModal";
 
 export default function RewardingReferrals({
   handleNextPage,
@@ -17,7 +18,12 @@ export default function RewardingReferrals({
   const [option3, setOption3] = useState("10");
   const [option4, setOption4] = useState("0");
   const [maxTokens, setMaxTokens] = useState("0");
+
   const { address } = useAccount();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [genCode, setGenCode] = useState("")
+
 
   const change3 = (e: any) => {
     if (e.target.value.length > 3) return;
@@ -33,8 +39,8 @@ export default function RewardingReferrals({
     }
   };
 
-  const { data: dataApprove, write } = useContractWrite({
-    address: settings.sepolia.CCIPBNM as any, // tokenAddress as any,
+  const { data: dataApprove, isSuccess: dataSuccess, write } = useContractWrite({
+    address: settings.fuji.CCIPBNM as any, // tokenAddress as any,
     abi: erc20ABI,
     functionName: "approve",
   });
@@ -42,68 +48,73 @@ export default function RewardingReferrals({
   const handleApprove = () => {
     write({
       args: [
-        settings.sepolia.HyperclusterFactory.address as any,
-        BigInt("200000000000000000000000"),
+        settings.fuji.HyperclusterFactory.address as any,
+        BigInt(maxTokens + 20),
       ],
     });
   };
 
-  const { data: dataCreate, write: writeCreate } = useContractWrite({
-    address: settings.sepolia.HyperclusterFactory.address as any,
-    abi: settings.sepolia.HyperclusterFactory.abi,
+  const unwatch = useContractEvent({
+    address: settings.fuji.HyperclusterFactory.address as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
+    eventName: 'CampaignCreated',
+    listener(log) {
+      console.log(log);
+      handleSuccess((log[0] as any).campaign_address);
+     
+
+      setGenCode((log[0] as any).args?.campaign_address)
+      unwatch?.()  
+    },
+  })
+
+  const handleSuccess = async (campaign_id: string) => {
+    console.log(campaign_id);
+    const res = await fetch(settings.endpoint + "/api/generate", {
+      method: "POST",
+      headers: {
+        api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
+      },
+      body: JSON.stringify({
+        referrer_address: address,
+        campaign_id: campaign_id,
+      }),
+    });
+
+    setGenCode(await res.text());
+    setIsOpen(true)  
+
+;  }
+
+  const { data: dataCreate, isLoading: createIsLoading, isSuccess: createSuccess, write: writeCreate } = useContractWrite({
+    address: settings.fuji.HyperclusterFactory.address as any,
+    abi: settings.fuji.HyperclusterFactory.abi,
     functionName: "createCampaign",
   });
 
+
   const handleWrite = () => {
-    console.log(settings.sepolia.HyperclusterFactory.address as any);
-    console.log(address);
-
-    //   struct CreateCampaignParams{
-    //     string name;
-    //     string metadata;
-    //     address rewardTokenAddress;
-    //     address rootReferral;
-    //     uint256 rewardPercentPerMilestone;
-    //     uint256 totalSupply;
-    //     uint256 increaseRate;
-    //     uint256 startIn;
-    //     uint256 endIn;
-    //     address dataFeedAddress;
-    // }
-
-    // ["Hotpot","metadata","0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05","0x0429A2Da7884CA14E53142988D5845952fE4DF6a","10","20000000000000000","10","0","1000000","0x694AA1769357215DE4FAC081bf1f309aDC325306"]
-
-    // [[
-    //   name,
-    //   "metadatastring",
-    //   settings.sepolia.CCIPBNM,
-    //   address,
-    //   "1",
-    //   "1000000000000000000",
-    //   "200000000000000000000000",
-    //   "10",
-    //   "0",
-    //   "1000",
-    //   "0x3E72a614A4A14d3AeD58D76A7A5E886B2376c96A"
-    // ]]
 
     writeCreate({
       args: [
-        [
-          name,
-          "metadata",
-          settings.sepolia.CCIPBNM,
-          address,
-          "10",
-          "20000000000000000",
-          "10",
-          "0",
-          "1000000",
-          "0x694AA1769357215DE4FAC081bf1f309aDC325306",
-        ],
+        [name,
+        "This is a campaign to reward users for referring each other",
+        "0xD21341536c5cF5EB1bcb58f6723cE26e8D8E90e4",
+        address,
+        "10",
+        maxTokens,
+        "10",
+        "0",
+        "100000000",
+        "0x5498BB86BC934c8D34FDA08E81D444153d0D06aD"]
       ],
     });
   };
+
+  const Chow = () => {
+    handleSuccess("0x5498BB86BC934c8D34FDA08E81D444153d0D06aD")
+
+  }
 
   // const { isLoading, isSuccess } = useWaitForTransaction({
   //   hash: data?.hash,
@@ -205,28 +216,39 @@ export default function RewardingReferrals({
               </li>
               <li>Protocol Fee: 2.5% of all claimed rewards</li>
             </ul>
+            
           </div>
-        </div>
-        <div></div>
-
-        <div className="relative">
-          <button
-            onClick={handleApprove}
-            disabled={!address}
-            className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-64 bottom-[1px]"
-          >
-            APPROVE
-          </button>
+          <div className="relative ml-auto">
+          {dataSuccess ? 
           <button
             onClick={handleWrite}
             disabled={!address}
             className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-14 bottom-[1px]"
           >
-            Deploy
+            {createIsLoading ? "Deploying" : "Deploy" }
           </button>
-          <button onClick={handleNextPage}>{"->"}</button>
+          :
+          <button
+            onClick={handleApprove}
+            disabled={!address}
+            className="absolute bg-[#FF5906] text-white rounded-lg py-2 px-16  text-xl right-64 bottom-[1px]"
+          >
+            Approve
+          </button>
+          }
+          <button onClick={Chow}>{"->"}</button>
+          </div>
+            {isOpen && (
+                <>
+                  <div onClick={()=> setIsOpen(false)} className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40"></div>
+                  <div className="fixed top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 bg-[#FF5906] p-4 z-50 opacity-100 w-[25%] rounded-lg">
+                    <DeployedModal close={() => setIsOpen(false)} refCode={genCode} />
+                  </div>
+                </>
+              )}
         </div>
       </div>
+     
     </div>
   );
 }

@@ -6,7 +6,6 @@ export function MyCampaigns() {
 
   const { address } = useAccount(); 
   const { chain } = useNetwork();
-  const [network, setNetwork] = useState(chain ? chain.name : "sepolia");
 
 
   const { data: campaign_addresses }= useContractRead({
@@ -19,7 +18,7 @@ export function MyCampaigns() {
   const locs = (campaign_addresses ? campaign_addresses as [] : []).map(x => {
     return {
       address: x,
-      abi: settings.sepolia.HyperclusterImplementation.abi,
+      abi: settings.fuji.HyperclusterImplementation.abi,
       function: 'name'
     }
   })

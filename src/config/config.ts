@@ -16,11 +16,12 @@ export const settings = {
       abi: HyperclusterABI,
     },
     HyperclusterFactory: {
-      address: "0xf3Dfb114CFAe91FC391e3E76f208eBbF595dCA82",
+      address: "0xd8D374349D0f3c6c1aAa82dcBd742edfc1BFf28d",
       explorerURL:
         "https://testnet.snowtrace.io/address/0xf3Dfb114CFAe91FC391e3E76f208eBbF595dCA82",
       abi: HyperclusterFactoryABI,
     },
+    CCIPBNM: "0xD21341536c5cF5EB1bcb58f6723cE26e8D8E90e4",
   },
   sepolia: {
     HyperclusterImplementation: {
@@ -30,7 +31,7 @@ export const settings = {
       address: "0x8Bbc1A9c2C746B1499aAef93c591e7C6ACfa1c7f",
       abi: HyperclusterFactorySepolia,
     },
-    CCIPBNM: "0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05",
+    CCIPBNM: "0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05", // 0xD21341536c5cF5EB1bcb58f6723cE26e8D8E90e4
   },
   endpoint: process.env.NEXT_PUBLIC_VERCEL_ENV
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -95,4 +96,4 @@ export const settings = {
 
 console.log("this endpoint", settings.endpoint);
 
-// ?ref=401c35625d67701f9b572fe8c8313d71b3618170a7f1b6c76de0b13d3e671979e7e687e142d057e258a5cc8a71293d21c6b9b2ca5ea52fff0b221c6933693805c5f1cd9bc457b9b3db59f8773c9a6ef1202193fc372b31aa32666eda3ea50aec
+// http://localhost:3000/campaign/ire?ref=401c35625d67701f9b572fe8c8313d71b3618170a7f1b6c76de0b13d3e671979e7e687e142d057e258a5cc8a71293d21c6b9b2ca5ea52fff0b221c6933693805c5f1cd9bc457b9b3db59f8773c9a6ef1202193fc372b31aa32666eda3ea50aec
