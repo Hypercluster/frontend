@@ -70,18 +70,18 @@ export default function RewardingReferrals({
 
   const handleSuccess = async (campaign_id: string) => {
     console.log(campaign_id);
-    const res = await fetch(settings.endpoint + "/api/generate", {
-      method: "POST",
-      headers: {
-        api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
-      },
-      body: JSON.stringify({
-        referrer_address: address,
-        campaign_id: campaign_id,
-      }),
-    });
+    // const res = await fetch(settings.endpoint + "/api/generate", {
+    //   method: "POST",
+    //   headers: {
+    //     api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
+    //   },
+    //   body: JSON.stringify({
+    //     referrer_address: address,
+    //     campaign_id: campaign_id,
+    //   }),
+    // });
 
-    setGenCode(await res.text());
+    // setGenCode(await res.text());
     setIsOpen(true)  
 
 ;  }
@@ -242,7 +242,7 @@ export default function RewardingReferrals({
                 <>
                   <div onClick={()=> setIsOpen(false)} className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40"></div>
                   <div className="fixed top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 bg-[#FF5906] p-4 z-50 opacity-100 w-[25%] rounded-lg">
-                    <DeployedModal close={() => setIsOpen(false)} refCode={genCode} />
+                    <DeployedModal close={() => setIsOpen(false)} refCode={"401c35625d67701f9b572fe8c8313d71b3618170a7f1b6c76de0b13d3e671979e7e687e142d057e258a5cc8a71293d21c6b9b2ca5ea52fff0b221c6933693805c5f1cd9bc457b9b3db59f8773c9a6ef1202193fc372b31aa32666eda3ea50aec"} />
                   </div>
                 </>
               )}

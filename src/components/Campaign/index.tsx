@@ -75,24 +75,24 @@ export default function Campaign({
   }, [refCode]);
 
   const decodeRefCode = async (code: string) => {
-    const res = await fetch(settings.endpoint + `/api/resolve?ref=${code}`, {
-      headers: {
-        api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
-      },
-    });
-    const { referrer, referring, campaign_id } = await res.json();
+    // const res = await fetch(settings.endpoint + `/api/resolve?ref=${code}`, {
+    //   headers: {
+    //     api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
+    //   },
+    // });
+   //  const { referrer, referring, campaign_id } = await res.json();
 
-    console.log(referrer)
+    // console.log(referrer)
 
-    if (campaign !== campaign_id) {
-      console.log("Warning: campaign_address mismatch", campaign, campaign_id);
-    }
+    // if (campaign !== campaign_id) {
+    //   console.log("Warning: campaign_address mismatch", campaign, campaign_id);
+    // }
 
     let newParams = [...params];
     newParams[0] = referrer;
     setParams(newParams);
     setReferrer(referrer);
-    setCampaignAddress(campaign_id);
+    // setCampaignAddress(campaign_id);
     setSelect("referred");
   };
 
@@ -120,15 +120,20 @@ export default function Campaign({
     // console.log(userAddress, refCode);
     let refCode = 12;
     if (userAddress && refCode) {
-      const res = await fetch(settings.endpoint + "/api/upload", {
-        method: "GET",
-        headers: {
-          api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
-        },
-      });
+      // const res = await fetch(settings.endpoint + "/api/upload", {
+      //   method: "GET",
+      //   headers: {
+      //     api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
+      //   },
+      // });
+      
 
-      const { slotId, version } = await res.json();
-      console.log(slotId, version);
+      // const { slotId, version } = await res.json();
+      //console.log(slotId, version);
+
+      const slotId = 0;
+
+      const version = 1702351741;
 
       try {
         write?.({
@@ -144,22 +149,24 @@ export default function Campaign({
     if (isInCampaign) {
       const campaign_id = settings.fuji.HyperclusterImplementation.address;
 
-      const res = await fetch(settings.endpoint + "/api/generate", {
-        method: "POST",
-        headers: {
-          api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
-        },
-        body: JSON.stringify({
-          referrer_address: userAddress,
-          campaign_id: campaign_id,
-        }),
-      });
+      // const res = await fetch(settings.endpoint + "/api/generate", {
+      //   method: "POST",
+      //   headers: {
+      //     api_key: "8Tbinn8rPEMu1xKpyuukaAGLqOfmRWaL",
+      //   },
+      //   body: JSON.stringify({
+      //     referrer_address: userAddress,
+      //     campaign_id: campaign_id,
+      //   }),
+      // });
+
+      const res = "dwqnionodwqino29039012n12on312312"
 
       let newParams = [...params];
       newParams[3] =
         settings.endpoint +
         `/campaign/${campaign_id}?ref=` +
-        (await res.text());
+        (await res); // res.text()
       setParams(newParams);
       setSelect("refer");
     }
